@@ -1,0 +1,1 @@
+g++ ./main.cpp -o ./dist/particle-life_linux -lsfml-graphics -lsfml-window -lsfml-system
