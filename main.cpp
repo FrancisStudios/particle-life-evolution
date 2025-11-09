@@ -7,12 +7,12 @@
  */
 
 #include <SFML/Graphics.hpp>
+#include "src/h/controlHUD.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Particle life | FrancisStudios");
     sf::Clock clock;
-    sf::Text controlsHUD;
 
     sf::Font defaultFont;
     if (!defaultFont.loadFromFile("./dist/typeface.ttf"))
@@ -20,14 +20,11 @@ int main()
         // TODO: font not found or failed to load
     }
 
-    controlsHUD.setString("[S]tart");
-    controlsHUD.setCharacterSize(24);
-    controlsHUD.setPosition(100.0f, 100.0f);
-    controlsHUD.setFont(defaultFont);
-    controlsHUD.setFillColor(sf::Color::White);
+    sf::Text ctrlHUD(ControlHUD::init(defaultFont));
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
+
 
     while (window.isOpen())
     {
@@ -50,7 +47,7 @@ int main()
 
         window.clear(sf::Color::Black);
         window.draw(shape);
-        window.draw(controlsHUD);
+        window.draw(ctrlHUD);
         window.display();
     }
 
