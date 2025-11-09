@@ -5,3 +5,4 @@ Particle life simulation is quite a popular concept in evolution and genetics re
 
 🔴 No release yet
 
+![screenshot](./docs/screenshot.png)

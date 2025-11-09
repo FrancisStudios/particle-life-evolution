@@ -13,15 +13,14 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Particle life | FrancisStudios");
-    
+
     sf::Clock clock;
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
-    shape.setPosition(5.0f, 30.0f);
-
+    shape.setPosition(395.0f, 295.0f);
 
     while (window.isOpen())
     {
@@ -37,9 +36,20 @@ int main()
 
         // TODO: <draw method will live here>
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-        {
             shape.move(100.0f * dtAsSeconds, 0.0f);
-        }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+            shape.move(-100.0f * dtAsSeconds, 0.0f);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            shape.move(0.0f, -100.0f * dtAsSeconds);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+            shape.move(0.0f, 100.0f * dtAsSeconds);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
+            window.close();
+
         // TODO: </draw>
 
         window.clear(sf::Color::Black);

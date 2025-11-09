@@ -14,7 +14,7 @@ namespace ControlHUD
     {
         sf::Text HUD;
 
-        HUD.setString("[S]tart");
+        HUD.setString("[E]xit | [S]tart");
         HUD.setCharacterSize(fontsize);
         HUD.setPosition(x, y);
         HUD.setFont(typeFace);
