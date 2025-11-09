@@ -20,10 +20,11 @@ int main()
         // TODO: font not found or failed to load
     }
 
-    sf::Text ctrlHUD(ControlHUD::init(defaultFont));
+    sf::Text controlHUD = ControlHUD::init(defaultFont);
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
+    shape.setPosition(5.0f, 30.0f);
 
 
     while (window.isOpen())
@@ -47,7 +48,7 @@ int main()
 
         window.clear(sf::Color::Black);
         window.draw(shape);
-        window.draw(ctrlHUD);
+        window.draw(controlHUD);
         window.display();
     }
 

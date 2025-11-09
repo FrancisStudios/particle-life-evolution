@@ -10,13 +10,13 @@
 
 namespace ControlHUD
 {
-    sf::Text init(const sf::Font &typeFace)
+    sf::Text init(const sf::Font &typeFace, float x, float y, int fontsize)
     {
         sf::Text HUD;
-        
+
         HUD.setString("[S]tart");
-        HUD.setCharacterSize(24);
-        HUD.setPosition(100.0f, 100.0f);
+        HUD.setCharacterSize(fontsize);
+        HUD.setPosition(x, y);
         HUD.setFont(typeFace);
         HUD.setFillColor(sf::Color::White);
 

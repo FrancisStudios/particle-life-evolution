@@ -13,7 +13,7 @@
 
 namespace ControlHUD
 {
-    sf::Text init(const sf::Font &typeFace);
+    sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 1.0f, int fontsize = 24);
 };
 
 #endif
