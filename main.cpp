@@ -14,6 +14,7 @@ int main()
     sf::Clock clock;
 
     sf::CircleShape shape(10.f);
+    shape.setFillColor(sf::Color::Green);
 
     while (window.isOpen())
     {
