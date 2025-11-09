@@ -8,18 +8,14 @@
 
 #include <SFML/Graphics.hpp>
 #include "src/h/controlHUD.h"
+#include "src/h/fontloader.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Particle life | FrancisStudios");
     sf::Clock clock;
 
-    sf::Font defaultFont;
-    if (!defaultFont.loadFromFile("./dist/typeface.ttf"))
-    {
-        // TODO: font not found or failed to load
-    }
-
+    sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
 
     sf::CircleShape shape(10.f);
