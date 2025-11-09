@@ -11,10 +11,15 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Particle life | FrancisStudios");
+    sf::Clock clock;
+
+    sf::CircleShape shape(10.f);
 
     while (window.isOpen())
     {
         sf::Event event;
+        sf::Time deltaTime = clock.restart();
+        float dtAsSeconds = deltaTime.asSeconds();
 
         while (window.pollEvent(event))
         {
@@ -22,21 +27,15 @@ int main()
                 window.close();
         }
 
-        window.clear(sf::Color::Black);
-
         // TODO: <draw method will live here>
-
-        float xpos = 0.0f;
-        while (xpos < 600.f)
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
-            sf::CircleShape shape(10.f);
-            shape.setFillColor(sf::Color(100, 250, 50));
-            shape.setPosition({xpos, 10.f});
-            window.draw(shape);
-
-            xpos += 0.01f;
+            shape.move(100.0f * dtAsSeconds, 0.0f);
         }
+        // TODO: </draw>
 
+        window.clear(sf::Color::Black);
+        window.draw(shape);
         window.display();
     }
 
