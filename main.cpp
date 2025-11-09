@@ -12,6 +12,19 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Particle life | FrancisStudios");
     sf::Clock clock;
+    sf::Text controlsHUD;
+
+    sf::Font defaultFont;
+    if (!defaultFont.loadFromFile("./dist/typeface.ttf"))
+    {
+        // TODO: font not found or failed to load
+    }
+
+    controlsHUD.setString("[S]tart");
+    controlsHUD.setCharacterSize(24);
+    controlsHUD.setPosition(100.0f, 100.0f);
+    controlsHUD.setFont(defaultFont);
+    controlsHUD.setFillColor(sf::Color::White);
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
@@ -29,7 +42,7 @@ int main()
         }
 
         // TODO: <draw method will live here>
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             shape.move(100.0f * dtAsSeconds, 0.0f);
         }
@@ -37,6 +50,7 @@ int main()
 
         window.clear(sf::Color::Black);
         window.draw(shape);
+        window.draw(controlsHUD);
         window.display();
     }
 
