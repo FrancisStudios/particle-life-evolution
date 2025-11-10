@@ -1,3 +1,4 @@
+
 /**
  *  ------ [ Property of Francis Studios ] ------
  * ==============================================
@@ -6,16 +7,17 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#ifndef CONTROL_HUD_H
-#define CONTROL_HUD_H
+#ifndef DEBUG_HUD_H
+#define DEBUG_HUD_H
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <sstream>
 
-namespace ControlHUD
+namespace DebugHUD
 {
-    sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 1.0f, int fontsize = 24);
-};
+    sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 100.0f, int fontsize = 24);
+}
 
 #endif

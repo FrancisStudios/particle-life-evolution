@@ -9,14 +9,19 @@
 #include <SFML/Graphics.hpp>
 #include "src/h/controlHUD.h"
 #include "src/h/fontloader.h"
+#include "src/h/util.h"
+#include "src/h/debugHUD.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Particle life | FrancisStudios");
+    sf::RenderWindow window(sf::VideoMode(800, 600), Util::WINDOW_TITLE());
 
     sf::Clock clock;
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
+    sf::Text debugHUD = DebugHUD::init(defaultFont);
+
+    bool debugMode = false;
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
@@ -34,7 +39,6 @@ int main()
                 window.close();
         }
 
-        // TODO: <draw method will live here>
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
             shape.move(100.0f * dtAsSeconds, 0.0f);
 
@@ -50,9 +54,14 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             window.close();
 
-        // TODO: </draw>
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
+            debugMode = !debugMode;
 
         window.clear(sf::Color::Black);
+
+        if (debugMode)
+            window.draw(debugHUD);
+
         window.draw(shape);
         window.draw(controlHUD);
         window.display();

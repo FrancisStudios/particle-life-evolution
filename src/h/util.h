@@ -6,16 +6,15 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#ifndef CONTROL_HUD_H
-#define CONTROL_HUD_H
+#ifndef UTIL_H
+#define UTIL_H
+#pragma once
 
-#include <SFML/Graphics.hpp>
 #include <string>
 #include <sstream>
 
-namespace ControlHUD
+namespace Util
 {
-    sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 1.0f, int fontsize = 24);
+    std::string WINDOW_TITLE();
 };
-
 #endif

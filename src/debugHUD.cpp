@@ -6,32 +6,21 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#include "./h/controlHUD.h"
+#include "./h/debugHUD.h"
 
-#define DIVIDER " | "
-#define EXIT "[E]xit"
-#define START "[S]tart"
-#define STOP "[S]top"
-#define DEBUG "[F3] Debug"
-
-namespace ControlHUD
+namespace DebugHUD
 {
     sf::Text init(const sf::Font &typeFace, float x, float y, int fontsize)
     {
+
         sf::Text HUD;
-        std::ostringstream HUDOptions;
+        std::ostringstream HUDTemplate;
+        HUDTemplate << "DEBUG COMES HERE";
 
-        HUDOptions << EXIT
-                   << DIVIDER
-                   << START
-                   << DIVIDER
-                   << DEBUG;
-
-        HUD.setString(HUDOptions.str());
+        HUD.setString(HUDTemplate.str());
         HUD.setCharacterSize(fontsize);
         HUD.setPosition(x, y);
         HUD.setFont(typeFace);
-        //HUD.setFillColor(sf::Color::White);
 
         return HUD;
     }
