@@ -15,7 +15,7 @@
 
 #ifdef _WIN32
 #define OS "for Windows"
-#elif
+#elif __linux__
 #define OS "for Linux"
 #endif
 
