@@ -16,5 +16,7 @@
 namespace Util
 {
     std::string WINDOW_TITLE();
+    template <typename C>
+    inline int strcpy_s(C *d, unsigned long dmax, const C *s);
 };
 #endif

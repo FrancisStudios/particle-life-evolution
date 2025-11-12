@@ -10,8 +10,23 @@
 #pragma once
 
 #include <stdio.h>
-namespace Logger
-{
+#include "./util.h"
 
-}
+class Logger
+{
+private:
+    Logger() {}
+    ~Logger() {}
+    Logger(const Logger &) = delete;
+    Logger &operator=(const Logger &) = delete;
+    bool isLoggerOn;
+
+public:
+    static Logger &getInstance();
+    void turnOnLogger();
+    void turnOffLogger();
+    void toggleLogger();
+    void print(char *buffer[], int logLevel);
+};
+
 #endif

@@ -8,10 +8,51 @@
 
 #include "./h/logger.h"
 
-namespace Logger
+#define ERROR "[ERROR]"
+#define LOG "[LOG]"
+#define WARN "[WARN]"
+
+bool isLoggerOn = false;
+
+Logger &Logger::getInstance()
 {
-    void print(const char *message)
+    static Logger instance;
+    return instance;
+}
+
+void Logger::turnOnLogger()
+{
+    this->isLoggerOn = true;
+}
+
+void Logger::turnOffLogger()
+{
+    this->isLoggerOn = false;
+}
+
+void Logger::toggleLogger()
+{
+    this->isLoggerOn = !this->isLoggerOn;
+}
+
+void Logger::print(char *buffer[], int logLevel)
+{
+    char *logLevelIndicator[8];
+    switch (logLevel)
     {
-        printf("%s", message);
+    case 1:
+        // Util::strcpy_s(logLevelIndicator, LOG, sizeof(LOG));
+        break;
+    case 2:
+        // logLevelIndicator = WARN;
+        break;
+    case 3:
+        // logLevelIndicator = ERROR;
+        break;
+    default:
+        // logLevelIndicator = LOG;
+        break;
     }
+
+    printf("%s", logLevelIndicator);
 }
