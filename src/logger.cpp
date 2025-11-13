@@ -35,24 +35,26 @@ void Logger::toggleLogger()
     this->isLoggerOn = !this->isLoggerOn;
 }
 
-void Logger::print(char *buffer[], int logLevel)
+void Logger::print(const char buffer[], int logLevel)
 {
-    char *logLevelIndicator[8];
+    const char *logLevelPrefix = nullptr;
+
+    // Determine the log level prefix
     switch (logLevel)
     {
     case 1:
-        // Util::strcpy_s(logLevelIndicator, LOG, sizeof(LOG));
+        logLevelPrefix = LOG;
         break;
     case 2:
-        // logLevelIndicator = WARN;
+        logLevelPrefix = WARN;
         break;
     case 3:
-        // logLevelIndicator = ERROR;
+        logLevelPrefix = ERROR;
         break;
     default:
-        // logLevelIndicator = LOG;
+        logLevelPrefix = LOG;
         break;
     }
 
-    printf("%s", logLevelIndicator);
+    printf("%s %s\n", logLevelPrefix, buffer);
 }

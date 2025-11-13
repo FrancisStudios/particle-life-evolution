@@ -12,9 +12,10 @@
 
 #include <nlohmann/json.hpp>
 #include <fstream>
+#include "logger.h"
 
 namespace JSONOps
 {
-
+    void load_json_file(const std::string &filepath);
 }
 #endif

@@ -10,6 +10,7 @@
 #pragma once
 
 #include <stdio.h>
+#include <string>
 #include "./util.h"
 
 class Logger
@@ -26,7 +27,7 @@ public:
     void turnOnLogger();
     void turnOffLogger();
     void toggleLogger();
-    void print(char *buffer[], int logLevel);
+    void print(const char buffer[], int logLevel);
 };
 
 #endif

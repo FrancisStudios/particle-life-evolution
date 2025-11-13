@@ -11,17 +11,23 @@
 #include "src/h/fontloader.h"
 #include "src/h/util.h"
 #include "src/h/debugHUD.h"
+#include "src/h/logger.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), Util::WINDOW_TITLE());
 
     sf::Clock clock;
+    Logger &log = Logger::getInstance();
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
     sf::Text debugHUD = DebugHUD::init(defaultFont);
 
     bool debugMode = false;
+    
+    log.turnOnLogger();
+
+    log.print("hello from logger", 1);
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
