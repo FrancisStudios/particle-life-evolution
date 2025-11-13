@@ -8,9 +8,14 @@
 
 #define VALID_CONFIGURATION_VERSION "ple-simconfig-1.x"
 
+#define CAN_NOT_PARSE_FILE "Parsing error while reading JSON file! (json.cpp)"
+#define CAN_NOT_OPEN_FILE "Can not open JSON file! (json.cpp)"
+
 #include "./h/json.h"
 
 using json = nlohmann::json;
+
+Logger &log = Logger::getInstance();
 
 namespace JSONOps
 {
@@ -30,12 +35,12 @@ namespace JSONOps
             }
             catch (json::parse_error &e)
             {
-                // Handle parsing errors
+                log.print(CAN_NOT_PARSE_FILE, 3);
             }
         }
         else
         {
-            // Handle cannot open file
+            log.print(CAN_NOT_OPEN_FILE, 3);
         }
     }
 }

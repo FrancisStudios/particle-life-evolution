@@ -24,10 +24,8 @@ int main()
     sf::Text debugHUD = DebugHUD::init(defaultFont);
 
     bool debugMode = false;
-    
-    log.turnOnLogger();
 
-    log.print("hello from logger", 1);
+    log.turnOnLogger();
 
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
