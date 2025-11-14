@@ -12,6 +12,7 @@
 #include "src/h/util.h"
 #include "src/h/debugHUD.h"
 #include "src/h/logger.h"
+#include "src/h/json.h"
 
 int main()
 {
@@ -27,9 +28,13 @@ int main()
 
     log.turnOnLogger();
 
+    log.print("should log");
+
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
     shape.setPosition(395.0f, 295.0f);
+
+    JSONOps::load_json_file("sim.config.json");
 
     while (window.isOpen())
     {

@@ -27,7 +27,7 @@ public:
     void turnOnLogger();
     void turnOffLogger();
     void toggleLogger();
-    void print(const char buffer[], int logLevel);
+    void print(const char buffer[], int logLevel = 1);
 };
 
 #endif

@@ -15,32 +15,33 @@
 
 using json = nlohmann::json;
 
-Logger &log = Logger::getInstance();
+Logger &logger = Logger::getInstance();
 
 namespace JSONOps
 {
     void load_json_file(const std::string &filepath)
     {
-        std::ifstream f(filepath);
+        std::ifstream file(filepath);
 
-        if (f.is_open())
+        if (file.is_open())
         {
             try
             {
-                json data = json::parse(f);
+                json data = json::parse(file);
                 if (data.contains("file"))
                 {
                     std::string value = data["file"];
+                    logger.print(value.c_str());
                 }
             }
             catch (json::parse_error &e)
             {
-                log.print(CAN_NOT_PARSE_FILE, 3);
+                logger.print(CAN_NOT_PARSE_FILE, 3);
             }
         }
         else
         {
-            log.print(CAN_NOT_OPEN_FILE, 3);
+            logger.print(CAN_NOT_OPEN_FILE, 3);
         }
     }
 }
