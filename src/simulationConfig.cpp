@@ -6,10 +6,20 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
- #include "./h/simulationConfig.h"
+#include "./h/simulationConfig.h"
 
- SimConfig &SimConfig::getInstance()
+SimConfig &SimConfig::getInstance()
 {
     static SimConfig instance;
     return instance;
+}
+
+void SimConfig::setParticleSize(float pSize)
+{
+    SimConfig::particleSize = pSize;
+}
+
+float SimConfig::getParticleSize()
+{
+    return SimConfig::particleSize;
 }

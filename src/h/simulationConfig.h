@@ -18,8 +18,12 @@ private:
     SimConfig(const SimConfig &) = delete;
     SimConfig &operator=(const SimConfig &) = delete;
 
+    float particleSize;
+
 public:
     static SimConfig &getInstance();
+    void setParticleSize(float particleSize);
+    float getParticleSize();
 };
 
 #endif

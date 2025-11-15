@@ -13,6 +13,7 @@
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include "logger.h"
+#include "simulationConfig.h"
 
 namespace JSONOps
 {

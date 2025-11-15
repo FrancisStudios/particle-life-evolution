@@ -13,6 +13,7 @@
 #include "src/h/debugHUD.h"
 #include "src/h/logger.h"
 #include "src/h/json.h"
+#include "src/h/simulationConfig.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
@@ -23,9 +24,11 @@
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), Util::WINDOW_TITLE());
+    JSONOps::loadSimulatorConfig(SIM_CONFIG);
 
     sf::Clock clock;
     Logger &log = Logger::getInstance();
+    SimConfig &simulationConfig = SimConfig::getInstance();
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
     sf::Text debugHUD = DebugHUD::init(defaultFont);
@@ -34,11 +37,12 @@ int main()
 
     log.turnOnLogger();
 
-    sf::CircleShape shape(10.f);
+    sf::CircleShape shape(simulationConfig.getParticleSize());
+
     shape.setFillColor(sf::Color::Green);
     shape.setPosition(395.0f, 295.0f);
 
-    JSONOps::loadSimulatorConfig(SIM_CONFIG);
+    
 
     while (window.isOpen())
     {

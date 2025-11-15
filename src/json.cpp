@@ -16,6 +16,7 @@
 using json = nlohmann::json;
 
 Logger &logger = Logger::getInstance();
+SimConfig &simulationConfig = SimConfig::getInstance();
 
 namespace JSONOps
 {
@@ -30,8 +31,16 @@ namespace JSONOps
                 json data = json::parse(file);
                 if (data.contains("file"))
                 {
-                    std::string value = data["file"];
-                    logger.print(value.c_str());
+                    std::string fileVersion = data["file"];
+                    if (strcmp(fileVersion.c_str(), VALID_CONFIGURATION_VERSION) == 0)
+                    {
+                        logger.print("Config file version accepted", 1);
+                        simulationConfig.setParticleSize((float)data["particle-size"]);
+                    }
+                    else
+                    {
+                        logger.print("Invalid config file version", 3);
+                    }
                 }
             }
             catch (json::parse_error &e)

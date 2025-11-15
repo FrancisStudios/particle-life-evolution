@@ -1,3 +1,4 @@
 {
-    "file": "ple-simconfig-1.x"
+    "file": "ple-simconfig-1.x",
+    "particle-size": 10.0
 }
