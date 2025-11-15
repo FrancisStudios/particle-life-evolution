@@ -21,6 +21,31 @@
 #define SIM_CONFIG "sim.config.json"
 #endif
 
+#define BUTTON_TIMER_LIMIT 0.5f
+
+void detectIfDebugMenuIsActivated(
+    bool &debugButtonEnabled,
+    bool &debugMode,
+    float &debugButtonEnableTimer,
+    float dtAsSeconds)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3) && debugButtonEnabled)
+    {
+        debugMode = !debugMode;
+        debugButtonEnabled = false;
+    }
+
+    if (!debugButtonEnabled)
+    {
+        debugButtonEnableTimer += dtAsSeconds;
+        if (debugButtonEnableTimer > BUTTON_TIMER_LIMIT)
+        {
+            debugButtonEnableTimer = 0.0f;
+            debugButtonEnabled = true;
+        }
+    }
+}
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), Util::WINDOW_TITLE());
@@ -34,6 +59,8 @@ int main()
     sf::Text debugHUD = DebugHUD::init(defaultFont);
 
     bool debugMode = false;
+    bool debugButtonEnabled = true;
+    float debugButtonEnableTimer = 0.0f;
 
     log.turnOnLogger();
 
@@ -41,8 +68,6 @@ int main()
 
     shape.setFillColor(sf::Color::Green);
     shape.setPosition(395.0f, 295.0f);
-
-    
 
     while (window.isOpen())
     {
@@ -71,8 +96,11 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             window.close();
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3))
-            debugMode = !debugMode;
+        detectIfDebugMenuIsActivated(
+            debugButtonEnabled,
+            debugMode,
+            debugButtonEnableTimer,
+            dtAsSeconds);
 
         window.clear(sf::Color::Black);
 
