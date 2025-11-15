@@ -17,7 +17,7 @@
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
-#elif _linux_
+#elif __linux__
 #define SIM_CONFIG "sim.config.json"
 #endif
 
