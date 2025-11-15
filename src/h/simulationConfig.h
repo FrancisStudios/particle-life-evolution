@@ -6,16 +6,20 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#ifndef JSON_H
-#define JSON_H
+#ifndef SIM_CONF_H
+#define SIM_CONF_H
 #pragma once
 
-#include <nlohmann/json.hpp>
-#include <fstream>
-#include "logger.h"
-
-namespace JSONOps
+class SimConfig
 {
-    void loadSimulatorConfig(const std::string &filepath);
-}
+private:
+    SimConfig() {}
+    ~SimConfig() {}
+    SimConfig(const SimConfig &) = delete;
+    SimConfig &operator=(const SimConfig &) = delete;
+
+public:
+    static SimConfig &getInstance();
+};
+
 #endif

@@ -14,6 +14,12 @@
 #include "src/h/logger.h"
 #include "src/h/json.h"
 
+#ifdef _WIN32
+#define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
+#elif _linux_
+#define SIM_CONFIG "sim.config.json"
+#endif
+
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), Util::WINDOW_TITLE());
@@ -28,13 +34,11 @@ int main()
 
     log.turnOnLogger();
 
-    log.print("should log");
-
     sf::CircleShape shape(10.f);
     shape.setFillColor(sf::Color::Green);
     shape.setPosition(395.0f, 295.0f);
 
-    JSONOps::load_json_file("sim.config.json");
+    JSONOps::loadSimulatorConfig(SIM_CONFIG);
 
     while (window.isOpen())
     {

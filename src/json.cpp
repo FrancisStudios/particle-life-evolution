@@ -19,7 +19,7 @@ Logger &logger = Logger::getInstance();
 
 namespace JSONOps
 {
-    void load_json_file(const std::string &filepath)
+    void loadSimulatorConfig(const std::string &filepath)
     {
         std::ifstream file(filepath);
 
