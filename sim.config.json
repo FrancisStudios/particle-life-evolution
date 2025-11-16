@@ -1,13 +1,41 @@
 {
     "file": "ple-simconfig-1.x",
     "particle-size": 10.0,
+    "entity-count": 100,
     "species-count": 4,
     "species": [
         {
-            "name": "goblin"
+            "name": "goblin",
+            "color": "green"
         },
         {
-            "name": "reddot"
+            "name": "rotblud",
+            "color": "red"
+        },
+        {
+            "name": "dwarf",
+            "color": "yellow"
+        },
+        {
+            "name": "elf",
+            "color": "blue"
         }
+    ],
+    "forces": [
+        { "from": "goblin", "to": "rotblud", "strength": 0.0 },
+        { "from": "goblin", "to": "dwarf", "strength": -0.9 },
+        { "from": "goblin", "to": "elf", "strength": 0.1 },
+
+        { "from": "rotblud", "to": "goblin", "strength": 0.3 },
+        { "from": "rotblud", "to": "dwarf", "strength": 0.6 },
+        { "from": "rotblud", "to": "elf", "strength": -0.4 },
+
+        { "from": "dwarf", "to": "goblin", "strength": -0.8 },
+        { "from": "dwarf", "to": "rotblud", "strength": 0.7 },
+        { "from": "dwarf", "to": "elf", "strength": -0.2 },
+
+        { "from": "elf", "to": "goblin", "strength": -0.1 },
+        { "from": "elf", "to": "rotblud", "strength": -0.5 },
+        { "from": "elf", "to": "dwarf", "strength": 0.4 }
     ]
 }
