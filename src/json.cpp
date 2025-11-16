@@ -36,6 +36,12 @@ namespace JSONOps
                     {
                         logger.print("Config file version accepted", 1);
                         simulationConfig.setParticleSize((float)data["particle-size"]);
+
+                       // int speciesCount = data["species-count"];
+
+                        printf("spc %i\n", (int)data["species-count"]);
+
+                        printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
                     }
                     else
                     {

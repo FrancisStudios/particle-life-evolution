@@ -1,4 +1,13 @@
 {
     "file": "ple-simconfig-1.x",
-    "particle-size": 10.0
+    "particle-size": 10.0,
+    "species-count": 4,
+    "species": [
+        {
+            "name": "goblin"
+        },
+        {
+            "name": "reddot"
+        }
+    ]
 }
