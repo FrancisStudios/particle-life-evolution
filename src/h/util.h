@@ -19,4 +19,11 @@ namespace Util
     template <typename C>
     inline int strcpy_s(C *d, unsigned long dmax, const C *s);
 };
+
+struct Coord2D
+{
+    float x;
+    float y;
+};
+
 #endif

@@ -1,24 +1,29 @@
 {
     "file": "ple-simconfig-1.x",
     "particle-size": 10.0,
+    "entity-spawn-seed": "random",
     "entity-count": 100,
     "species-count": 4,
     "species": [
         {
             "name": "goblin",
-            "color": "green"
+            "color": "green",
+            "speed": 100
         },
         {
             "name": "rotblud",
-            "color": "red"
+            "color": "red",
+            "speed": 80
         },
         {
             "name": "dwarf",
-            "color": "yellow"
+            "color": "yellow",
+            "speed": 95
         },
         {
             "name": "elf",
-            "color": "blue"
+            "color": "blue",
+            "speed": 97
         }
     ],
     "forces": [

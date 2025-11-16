@@ -6,18 +6,11 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#ifndef JSON_H
-#define JSON_H
-#pragma once
+#include "./h/entity-model.h"
 
-#include <nlohmann/json.hpp>
-#include <fstream>
-#include "logger.h"
-#include "simulationConfig.h"
-
-namespace JSONOps
+Entity::Entity(string name, string color, float speed, Coord2D position)
 {
-    void loadSimulatorConfig(const std::string &filepath);
-    bool isSpeciesCountValid(int SC);
+    Entity::name = name;
+    Entity::speed = speed;
+    Entity::position = position;
 }
-#endif
