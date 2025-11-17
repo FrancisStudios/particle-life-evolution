@@ -39,13 +39,24 @@ namespace JSONOps
                     {
                         logger.print(CONFIG_FILE_ACCEPT, 1);
 
-                        float _particleSize = (float)data["particle-size"];
-                        float _speciesCount = (int)data["species-count"];
+                        /**
+                         * Getting Different parameters from JSON sim config file
+                         */
+                        float _particleSize = getFromSimConfig<float>(data, "particle-size");
+                        std::string _entitySpawnSeed = getFromSimConfig<std::string>(data, "entity-spawn-seed");
+                        int _entityCount = getFromSimConfig<int>(data, "entity-count");
+                        int _speciesCount = getFromSimConfig<int>(data, "species-count");
 
                         if (isSpeciesCountValid(_speciesCount))
                         {
+                            /* Storing JSON file params in simulation config  */
                             simulationConfig.setParticleSize(_particleSize);
+                            simulationConfig.setSeed(_entitySpawnSeed);
+                            simulationConfig.setEntityCount(_entityCount);
+                            simulationConfig.setSpeciesCount(_speciesCount);
+
                             printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
+                            printf("Entity count: %i\n", simulationConfig.getEntityCount());
                         }
                         else
                         {
@@ -69,8 +80,14 @@ namespace JSONOps
         }
     }
 
-     bool isSpeciesCountValid(int SC)
+    bool isSpeciesCountValid(int SC)
     {
         return (SC >= 2) && (SC <= 8);
+    }
+
+    template <typename T, typename JSONData>
+    T getFromSimConfig(const JSONData &data, const std::string &key)
+    {
+        return (T)data[key];
     }
 }

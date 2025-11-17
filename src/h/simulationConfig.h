@@ -10,6 +10,8 @@
 #define SIM_CONF_H
 #pragma once
 
+#include <string>
+
 class SimConfig
 {
 private:
@@ -19,11 +21,20 @@ private:
     SimConfig &operator=(const SimConfig &) = delete;
 
     float particleSize;
+    std::string seed;
+    int entityCount;
+    int speciesCount;
 
 public:
     static SimConfig &getInstance();
     void setParticleSize(float particleSize);
     float getParticleSize();
+    void setSeed(std::string seed);
+    std::string getSeed();
+    void setEntityCount(int count);
+    int getEntityCount();
+    void setSpeciesCount(int count);
+    int getSpeciesCount();
 };
 
 #endif

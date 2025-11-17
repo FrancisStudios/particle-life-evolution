@@ -19,5 +19,8 @@ namespace JSONOps
 {
     void loadSimulatorConfig(const std::string &filepath);
     bool isSpeciesCountValid(int SC);
+
+    template <typename T, typename JSONData>
+    T getFromSimConfig(const JSONData &data, const std::string &key);
 }
 #endif
