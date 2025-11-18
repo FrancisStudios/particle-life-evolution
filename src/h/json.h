@@ -14,6 +14,7 @@
 #include <fstream>
 #include "logger.h"
 #include "simulationConfig.h"
+#include "generator.h"
 
 namespace JSONOps
 {
