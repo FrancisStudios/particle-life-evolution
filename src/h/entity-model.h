@@ -13,21 +13,26 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "./util.h"
+#include <cstring>
 
 using namespace std;
 
 class Entity
 {
 private:
+    sf::CircleShape cell;
+
     string name;
     sf::Color color;
     float speed;
     Coord2D position;
     Coord2D direction;
 
+    void buildEntity();
+    sf::Color findColorByName(const char *name);
+
 public:
     Entity();
     Entity(string name, string color, float speed, Coord2D position);
 };
-
 #endif
