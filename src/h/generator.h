@@ -11,10 +11,11 @@
 #pragma once
 
 #include "./simulationConfig.h"
+#include <nlohmann/json.hpp>
 
 namespace Generator
 {
-    void createEntities();
+    void createEntities(const nlohmann::json_abi_v3_12_0::json &data);
 }
 
 #endif

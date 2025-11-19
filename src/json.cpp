@@ -56,10 +56,10 @@ namespace JSONOps
                             simulationConfig.setEntityCount(_entityCount);
                             simulationConfig.setSpeciesCount(_speciesCount);
 
-                            Generator::createEntities(); //TODO: needs <json> data data[]
+                            Generator::createEntities(data);
 
-                            printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
-                            printf("Entity count: %i\n", simulationConfig.getEntityCount());
+                            //printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
+                            //printf("Entity count: %i\n", simulationConfig.getEntityCount());
                         }
                         else
                         {

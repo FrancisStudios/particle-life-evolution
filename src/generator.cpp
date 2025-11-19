@@ -10,7 +10,7 @@
 
 namespace Generator
 {
-    void createEntities()
+    void createEntities(const nlohmann::json_abi_v3_12_0::json &data)
     {
         SimConfig &simulationConfig = SimConfig::getInstance();
 
@@ -23,7 +23,7 @@ namespace Generator
             if (speciesTypeSelector == _speciesCount)
                 speciesTypeSelector = 0;
 
-                //TODO: generation comes here -> should populate simulation class with <Entity>
+            // TODO: generation comes here -> should populate simulation class with <Entity>
 
             speciesTypeSelector++;
             speciesCountEquilibrian++;

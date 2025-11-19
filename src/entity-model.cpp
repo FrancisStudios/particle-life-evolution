@@ -23,7 +23,8 @@ Entity::Entity(string name, string color, float speed, Coord2D position)
 
 void Entity::buildEntity()
 {
-    Entity::cell.setFillColor(Entity::color);
+    Entity::cell.setFillColor(color);
+    Entity::cell.setPosition({position.x, position.y});
 }
 
 sf::Color Entity::findColorByName(const char *name)
