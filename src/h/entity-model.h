@@ -12,8 +12,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
-#include "./util.h"
 #include <cstring>
+#include "./util.h"
 
 using namespace std;
 

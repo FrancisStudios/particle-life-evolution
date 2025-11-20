@@ -25,7 +25,6 @@ namespace Generator
             if (speciesTypeSelector == _speciesCount)
                 speciesTypeSelector = 0;
 
-            // TODO: generation comes here -> should populate simulation class with <Entity>
             // Entity Factory
             Entity product = Entity(
                 (std::string)data["species"][speciesTypeSelector]["name"],
@@ -33,7 +32,7 @@ namespace Generator
                 (float)data["species"][speciesTypeSelector]["speed"],
                 {10.0f, 10.0f});
 
-            //simulation.addEntity(product);
+            simulation.addEntity(&product);
 
             speciesTypeSelector++;
             counter++;

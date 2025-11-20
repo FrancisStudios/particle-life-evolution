@@ -9,7 +9,7 @@
 #define SIMULATION_H
 #pragma once
 
-#include "entity-model.h"
+#include "./entity-model.h"
 
 class Simulation
 {
@@ -24,7 +24,7 @@ private:
 
 public:
     static Simulation &getInstance();
-    int addEntity(Entity e);
+    int addEntity(Entity *e);
 };
 
 #endif
