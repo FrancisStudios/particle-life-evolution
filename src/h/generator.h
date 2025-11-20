@@ -11,6 +11,7 @@
 #pragma once
 
 #include "./simulationConfig.h"
+#include "./simulation.h"
 #include <nlohmann/json.hpp>
 
 namespace Generator

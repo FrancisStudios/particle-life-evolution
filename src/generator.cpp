@@ -13,20 +13,26 @@ namespace Generator
     void createEntities(const nlohmann::json_abi_v3_12_0::json &data)
     {
         SimConfig &simulationConfig = SimConfig::getInstance();
+        Simulation &simulation = Simulation::getInstance();
 
         int _speciesCount = simulationConfig.getSpeciesCount();
-        int speciesCountEquilibrian = 0;
+        int _entityCount = simulationConfig.getEntityCount();
+        int counter = 0;
         int speciesTypeSelector = 0;
 
-        while (speciesCountEquilibrian < _speciesCount)
+        while (counter < _entityCount)
         {
             if (speciesTypeSelector == _speciesCount)
                 speciesTypeSelector = 0;
 
             // TODO: generation comes here -> should populate simulation class with <Entity>
+            // Entity Factory
+            // Entity product =
+            // simulation.addEntity();
+            //printf("species name: %s\n", ((std::string)data["species"][speciesTypeSelector]["name"]).c_str());
 
             speciesTypeSelector++;
-            speciesCountEquilibrian++;
+            counter++;
         }
     }
 }
