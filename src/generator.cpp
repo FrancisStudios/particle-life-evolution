@@ -27,9 +27,13 @@ namespace Generator
 
             // TODO: generation comes here -> should populate simulation class with <Entity>
             // Entity Factory
-            // Entity product =
-            // simulation.addEntity();
-            //printf("species name: %s\n", ((std::string)data["species"][speciesTypeSelector]["name"]).c_str());
+            Entity product = Entity(
+                (std::string)data["species"][speciesTypeSelector]["name"],
+                (std::string)data["species"][speciesTypeSelector]["color"],
+                (float)data["species"][speciesTypeSelector]["speed"],
+                {10.0f, 10.0f});
+
+            //simulation.addEntity(product);
 
             speciesTypeSelector++;
             counter++;

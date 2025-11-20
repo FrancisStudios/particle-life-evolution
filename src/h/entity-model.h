@@ -29,10 +29,11 @@ private:
     Coord2D direction;
 
     void buildEntity();
-    sf::Color findColorByName(const char *name);
 
 public:
     Entity();
     Entity(string name, string color, float speed, Coord2D position);
+
+    static sf::Color findColorByName(const char *name);
 };
 #endif

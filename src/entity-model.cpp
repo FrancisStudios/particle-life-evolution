@@ -12,6 +12,19 @@
 #define COLOR_BLUE "blue"
 #define COLOR_GREEN "green"
 #define COLOR_YELLOW "yellow"
+#define BLANK_ENTITY_NAME "_blank"
+#define DEFAULT_COLOR "_blank_color"
+
+Entity::Entity()
+{
+    Entity::name = BLANK_ENTITY_NAME;
+    Entity::color = Entity::findColorByName(DEFAULT_COLOR);
+    Entity::speed = 0.0f;
+    Entity::position = {0.0f, 0.0f};
+    Entity::direction = {0.0f, 0.0f};
+
+    buildEntity();
+}
 
 Entity::Entity(string name, string color, float speed, Coord2D position)
 {
@@ -19,6 +32,9 @@ Entity::Entity(string name, string color, float speed, Coord2D position)
     Entity::color = Entity::findColorByName(color.c_str());
     Entity::speed = speed;
     Entity::position = position;
+    Entity::direction = {0.0f, 0.0f};
+
+    buildEntity();
 }
 
 void Entity::buildEntity()

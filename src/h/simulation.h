@@ -9,7 +9,7 @@
 #define SIMULATION_H
 #pragma once
 
-//#include "entity-model.h"
+#include "entity-model.h"
 
 class Simulation
 {
@@ -18,13 +18,13 @@ private:
     ~Simulation() {};
     Simulation(const Simulation &) = delete;
     Simulation &operator=(const Simulation &) = delete;
-
-    //Entity entities[99]; // TODO: array size should be set by sim.config.json/entityCount
+    
+    Entity entities[99]; // TODO: array size should be set by sim.config.json/entityCount
     int addedEntites = 0;
 
 public:
     static Simulation &getInstance();
-    //int addEntity(Entity e);
+    int addEntity(Entity e);
 };
 
 #endif
