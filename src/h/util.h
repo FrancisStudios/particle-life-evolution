@@ -26,4 +26,9 @@ struct Coord2D
     float y;
 };
 
+struct SimulationSize2D
+{
+    int width;
+    int height;
+};
 #endif

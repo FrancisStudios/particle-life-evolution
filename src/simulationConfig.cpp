@@ -53,3 +53,13 @@ int SimConfig::getSpeciesCount()
 {
     return SimConfig::speciesCount;
 }
+
+void SimConfig::setSimulationSize(SimulationSize2D &_simulationSize)
+{
+    SimConfig::simulationSize = _simulationSize;
+}
+
+SimulationSize2D &SimConfig::getSimulationSize()
+{
+    return SimConfig::simulationSize;
+}

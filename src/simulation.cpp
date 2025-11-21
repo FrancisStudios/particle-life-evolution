@@ -20,7 +20,7 @@ Simulation &Simulation::getInstance()
  */
 int Simulation::addEntity(Entity::Cell *entity)
 {
-    printf("my name is %s and my speed is %f\n", (entity->name).c_str(), entity->speed);
+    //printf("my name is %s and my speed is %f\n", (entity->name).c_str(), entity->speed);
     // Simulation::entities[addedEntites] = entity;
     Simulation::addedEntites++;
     return Simulation::addedEntites - 1;

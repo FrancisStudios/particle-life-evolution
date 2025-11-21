@@ -48,12 +48,16 @@ void detectIfDebugMenuIsActivated(
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), Util::WINDOW_TITLE());
     JSONOps::loadSimulatorConfig(SIM_CONFIG);
+    SimConfig &simulationConfig = SimConfig::getInstance();
+
+    sf::RenderWindow window(
+        sf::VideoMode(simulationConfig.getSimulationSize().width,
+                      simulationConfig.getSimulationSize().height),
+        Util::WINDOW_TITLE());
 
     sf::Clock clock;
     Logger &log = Logger::getInstance();
-    SimConfig &simulationConfig = SimConfig::getInstance();
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
     sf::Text debugHUD = DebugHUD::init(defaultFont);

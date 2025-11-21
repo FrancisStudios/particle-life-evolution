@@ -11,6 +11,7 @@
 #pragma once
 
 #include <string>
+#include "util.h"
 
 class SimConfig
 {
@@ -20,6 +21,7 @@ private:
     SimConfig(const SimConfig &) = delete;
     SimConfig &operator=(const SimConfig &) = delete;
 
+    SimulationSize2D simulationSize;
     float particleSize;
     std::string seed;
     int entityCount;
@@ -35,6 +37,8 @@ public:
     int getEntityCount();
     void setSpeciesCount(int count);
     int getSpeciesCount();
+    void setSimulationSize(SimulationSize2D &simulationSize);
+    SimulationSize2D &getSimulationSize();
 };
 
 #endif

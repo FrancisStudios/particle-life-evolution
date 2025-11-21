@@ -50,16 +50,22 @@ namespace JSONOps
 
                         if (isSpeciesCountValid(_speciesCount))
                         {
+
                             /* Storing JSON file params in simulation config  */
                             simulationConfig.setParticleSize(_particleSize);
                             simulationConfig.setSeed(_entitySpawnSeed);
                             simulationConfig.setEntityCount(_entityCount);
                             simulationConfig.setSpeciesCount(_speciesCount);
 
+                            SimulationSize2D simSize;
+                            simSize.width = (int)data["simulation-size"]["width"];
+                            simSize.height = (int)data["simulation-size"]["height"];
+                            simulationConfig.setSimulationSize(simSize);
+
                             Generator::createEntities(data);
 
-                            //printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
-                            //printf("Entity count: %i\n", simulationConfig.getEntityCount());
+                            // printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
+                            // printf("Entity count: %i\n", simulationConfig.getEntityCount());
                         }
                         else
                         {
