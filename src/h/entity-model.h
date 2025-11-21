@@ -15,25 +15,48 @@
 #include <cstring>
 #include "./util.h"
 
+#define COLOR_RED "red"
+#define COLOR_BLUE "blue"
+#define COLOR_GREEN "green"
+#define COLOR_YELLOW "yellow"
+#define BLANK_ENTITY_NAME "_blank"
+#define DEFAULT_COLOR "_blank_color"
+#define DEFAULT_SPEED 0.0f
+#define DEFAULT_VECTOR2DF {0.0f, 0.0f}
+
 using namespace std;
 
-class Entity
+namespace Entity
 {
-private:
-    sf::CircleShape cell;
+    sf::Color findColorByName(const char *name);
 
-    string name;
-    sf::Color color;
-    float speed;
-    Coord2D position;
-    Coord2D direction;
+    struct Cell
+    {
+        // TODO: sf::CircleShape shape; some impementation
+        string name;
+        sf::Color color;
+        float speed;
+        Coord2D position;
+        Coord2D direction;
 
-    void buildEntity();
+        Cell(string _name, sf::Color _color, float _speed, Coord2D _position, Coord2D _direction)
+        {
+            name = _name;
+            color = _color;
+            speed = _speed;
+            position = _position;
+            direction = _direction;
+        }
 
-public:
-    Entity();
-    Entity(string name, string color, float speed, Coord2D position);
+        Cell()
+        {
+            name = BLANK_ENTITY_NAME;
+            color = findColorByName(DEFAULT_COLOR);
+            speed = DEFAULT_SPEED;
+            position = DEFAULT_VECTOR2DF;
+            direction = DEFAULT_VECTOR2DF;
+        }
+    };
+}
 
-    static sf::Color findColorByName(const char *name);
-};
 #endif

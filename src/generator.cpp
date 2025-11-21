@@ -26,13 +26,16 @@ namespace Generator
                 speciesTypeSelector = 0;
 
             // Entity Factory
-            Entity product = Entity(
-                (std::string)data["species"][speciesTypeSelector]["name"],
-                (std::string)data["species"][speciesTypeSelector]["color"],
-                (float)data["species"][speciesTypeSelector]["speed"],
-                {10.0f, 10.0f});
+            Entity::Cell product =
+                Entity::Cell(
+                    (std::string)data["species"][speciesTypeSelector]["name"],
+                    Entity::findColorByName(((std::string)data["species"][speciesTypeSelector]["color"]).c_str()),
+                    (float)data["species"][speciesTypeSelector]["speed"],
+                    {10.0f, 10.0f},
+                    {0.0f, 0.0f}
+                );
 
-            simulation.addEntity(&product);
+                simulation.addEntity(&product);
 
             speciesTypeSelector++;
             counter++;
