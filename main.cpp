@@ -14,6 +14,7 @@
 #include "src/h/logger.h"
 #include "src/h/json.h"
 #include "src/h/simulationConfig.h"
+#include "src/h/simulation.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
@@ -50,6 +51,7 @@ int main()
 {
     JSONOps::loadSimulatorConfig(SIM_CONFIG);
     SimConfig &simulationConfig = SimConfig::getInstance();
+    Simulation &simulation = Simulation::getInstance();
 
     sf::RenderWindow window(
         sf::VideoMode(simulationConfig.getSimulationSize().width,
@@ -110,6 +112,14 @@ int main()
 
         if (debugMode)
             window.draw(debugHUD);
+
+        for (int i = 0; i < simulationConfig.getEntityCount() - 10; i++)
+        {
+            printf("[%i] entity %s with speed %f\n",
+                   i,
+                   (simulation.getEntity(i).name).c_str(),
+                   simulation.getEntity(i).speed);
+        }
 
         window.draw(shape);
         window.draw(controlHUD);

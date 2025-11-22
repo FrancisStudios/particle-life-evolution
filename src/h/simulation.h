@@ -18,13 +18,14 @@ private:
     ~Simulation() {};
     Simulation(const Simulation &) = delete;
     Simulation &operator=(const Simulation &) = delete;
-    
-    Entity::Cell entities[99]; // TODO: array size should be set by sim.config.json/entityCount
+
+    Entity::Cell entities[100]; // TODO: array size should be set by sim.config.json/entityCount
     int addedEntites = 0;
 
 public:
     static Simulation &getInstance();
-    int addEntity(Entity::Cell *e);
+    int addEntity(Entity::Cell &e);
+    Entity::Cell getEntity(int _index);
 };
 
 #endif
