@@ -32,7 +32,7 @@ namespace Entity
 
     struct Cell
     {
-        // TODO: sf::CircleShape shape; some impementation
+        //sf::CircleShape shape(simulationConfig.getParticleSize());
         string name;
         sf::Color color;
         float speed;
