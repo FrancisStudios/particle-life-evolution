@@ -58,6 +58,7 @@ namespace Util
         return distribution(generator);
     }
 
+    // TODO: pass particle size and window size params down from main as fn params
     Coord2D generateRandomCoordinate()
     {
         Coord2D randomCoordinate;
