@@ -47,6 +47,22 @@ void detectIfDebugMenuIsActivated(
     }
 }
 
+void assembleEntitiesFromData(SimConfig &simulationConfig, Simulation &simulation)
+{
+    for (int i = 0; i < simulationConfig.getEntityCount(); i++)
+    {
+        // printf("[%i] entity %s with speed %f\n",
+        //        i,
+        //        (simulation.getEntity(i).name).c_str(),
+        //        simulation.getEntity(i).speed);
+
+    simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
+    //simulation.getEntity(i).shape.setPosition(#randomposition);
+    //TODO: random position generator in util
+
+    }
+}
+
 int main()
 {
     JSONOps::loadSimulatorConfig(SIM_CONFIG);
@@ -75,6 +91,10 @@ int main()
     shape.setFillColor(sf::Color::Green);
     shape.setPosition(395.0f, 295.0f);
 
+    /* Statical Processes Should Come Here - maybe reorg later */
+    assembleEntitiesFromData(simulationConfig, simulation);
+
+    /* Dynamical Processes Should Come Here - maybe reorg later */
     while (window.isOpen())
     {
         sf::Event event;
@@ -119,6 +139,8 @@ int main()
             //        i,
             //        (simulation.getEntity(i).name).c_str(),
             //        simulation.getEntity(i).speed);
+
+            // TODO: assemble shape ONCE before rendering here
         }
 
         window.draw(shape);
