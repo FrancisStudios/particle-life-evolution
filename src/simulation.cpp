@@ -25,7 +25,14 @@ int Simulation::addEntity(Entity::Cell &entity)
     return Simulation::addedEntites - 1;
 }
 
-Entity::Cell Simulation::getEntity(int index)
+/* This definition is needed for the renderer */
+const Entity::Cell &Simulation::getEntity(int index) const
+{
+    return Simulation::entities[index];
+}
+
+/* This definition is the generic fn def */
+Entity::Cell &Simulation::getEntity(int index)
 {
     return Simulation::entities[index];
 }

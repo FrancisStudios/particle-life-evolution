@@ -49,4 +49,14 @@ namespace Util
             ;
         return 0;
     }
+
+    Coord2D generateRandomCoordinate()
+    {
+        Coord2D randomCoordinate;
+
+        randomCoordinate.x = 230.0f;
+        randomCoordinate.y = 140.0f;
+
+        return randomCoordinate;
+    }
 }

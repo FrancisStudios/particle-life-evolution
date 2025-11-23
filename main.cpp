@@ -51,15 +51,11 @@ void assembleEntitiesFromData(SimConfig &simulationConfig, Simulation &simulatio
 {
     for (int i = 0; i < simulationConfig.getEntityCount(); i++)
     {
-        // printf("[%i] entity %s with speed %f\n",
-        //        i,
-        //        (simulation.getEntity(i).name).c_str(),
-        //        simulation.getEntity(i).speed);
+        Coord2D randomPosition = Util::generateRandomCoordinate();
 
-    simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
-    //simulation.getEntity(i).shape.setPosition(#randomposition);
-    //TODO: random position generator in util
-
+        simulation.getEntity(i).shape.setRadius(simulationConfig.getParticleSize());
+        simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
+        simulation.getEntity(i).shape.setPosition({randomPosition.x, randomPosition.y});
     }
 }
 
@@ -133,14 +129,10 @@ int main()
         if (debugMode)
             window.draw(debugHUD);
 
-        for (int i = 0; i < simulationConfig.getEntityCount() - 10; i++)
+        /* Entity Renderer Is Here */
+        for (int i = 0; i < simulationConfig.getEntityCount(); i++)
         {
-            // printf("[%i] entity %s with speed %f\n",
-            //        i,
-            //        (simulation.getEntity(i).name).c_str(),
-            //        simulation.getEntity(i).speed);
-
-            // TODO: assemble shape ONCE before rendering here
+            window.draw(simulation.getEntity(i).shape);
         }
 
         window.draw(shape);

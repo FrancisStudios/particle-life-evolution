@@ -25,7 +25,8 @@ private:
 public:
     static Simulation &getInstance();
     int addEntity(Entity::Cell &e);
-    Entity::Cell getEntity(int _index);
+    const Entity::Cell &getEntity(int index) const;
+    Entity::Cell &getEntity(int _index);
 };
 
 #endif
