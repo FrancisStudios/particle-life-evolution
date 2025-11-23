@@ -50,12 +50,30 @@ namespace Util
         return 0;
     }
 
+    double frandom(double min, double max)
+    {
+        unsigned seed = std::chrono::steady_clock::now().time_since_epoch().count();
+        std::mt19937 generator(seed);
+        std::uniform_real_distribution<double> distribution(min, max);
+        return distribution(generator);
+    }
+
     Coord2D generateRandomCoordinate()
     {
         Coord2D randomCoordinate;
 
-        randomCoordinate.x = 230.0f;
-        randomCoordinate.y = 140.0f;
+        float particleSize = 10.0f;
+
+        float _xPosition = frandom(
+            particleSize,
+            800 - particleSize);
+
+        float _yPosition = frandom(
+            particleSize,
+            600 - particleSize);
+
+        randomCoordinate.x = _xPosition;
+        randomCoordinate.y = _yPosition;
 
         return randomCoordinate;
     }

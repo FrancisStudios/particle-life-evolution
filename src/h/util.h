@@ -12,6 +12,8 @@
 
 #include <string>
 #include <sstream>
+#include <random>
+#include <chrono>
 
 struct Coord2D
 {
@@ -26,9 +28,10 @@ namespace Util
     template <typename C>
     inline int strcpy_s(C *d, unsigned long dmax, const C *s);
 
+    double frandom(double min, double max);
+
     Coord2D generateRandomCoordinate();
 };
-
 
 struct SimulationSize2D
 {
