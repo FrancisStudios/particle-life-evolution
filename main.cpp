@@ -115,10 +115,10 @@ int main()
 
         for (int i = 0; i < simulationConfig.getEntityCount() - 10; i++)
         {
-            printf("[%i] entity %s with speed %f\n",
-                   i,
-                   (simulation.getEntity(i).name).c_str(),
-                   simulation.getEntity(i).speed);
+            // printf("[%i] entity %s with speed %f\n",
+            //        i,
+            //        (simulation.getEntity(i).name).c_str(),
+            //        simulation.getEntity(i).speed);
         }
 
         window.draw(shape);

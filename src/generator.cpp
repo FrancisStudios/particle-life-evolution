@@ -32,7 +32,8 @@ namespace Generator
                     Entity::findColorByName(((std::string)data["species"][speciesTypeSelector]["color"]).c_str()),
                     (float)data["species"][speciesTypeSelector]["speed"],
                     {10.0f, 10.0f},
-                    {0.0f, 0.0f});
+                    {0.0f, 0.0f},
+                    sf::CircleShape((float)data["particle-size"]));
 
             simulation.addEntity(product);
 

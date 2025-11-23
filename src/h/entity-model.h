@@ -22,6 +22,7 @@
 #define BLANK_ENTITY_NAME "_blank"
 #define DEFAULT_COLOR "_blank_color"
 #define DEFAULT_SPEED 0.0f
+#define DEFAULT_RADIUS DEFAULT_SPEED
 #define DEFAULT_VECTOR2DF {0.0f, 0.0f}
 
 using namespace std;
@@ -32,15 +33,16 @@ namespace Entity
 
     struct Cell
     {
-        //sf::CircleShape shape(simulationConfig.getParticleSize());
+        sf::CircleShape shape;
         string name;
         sf::Color color;
         float speed;
         Coord2D position;
         Coord2D direction;
 
-        Cell(string _name, sf::Color _color, float _speed, Coord2D _position, Coord2D _direction)
+        Cell(string _name, sf::Color _color, float _speed, Coord2D _position, Coord2D _direction, sf::CircleShape shape)
         {
+            shape = shape;
             name = _name;
             color = _color;
             speed = _speed;
@@ -50,6 +52,7 @@ namespace Entity
 
         Cell()
         {
+            shape = sf::CircleShape(DEFAULT_RADIUS);
             name = BLANK_ENTITY_NAME;
             color = findColorByName(DEFAULT_COLOR);
             speed = DEFAULT_SPEED;
