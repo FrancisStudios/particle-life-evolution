@@ -12,6 +12,7 @@
 #define AUTHOR "by FrancisStudios"
 #define SPACING " "
 #define DIVIDER " | "
+#define MARGIN 10
 
 #ifdef _WIN32
 #define OS "for Windows"
@@ -58,20 +59,17 @@ namespace Util
         return distribution(generator);
     }
 
-    // TODO: pass particle size and window size params down from main as fn params
-    Coord2D generateRandomCoordinate()
+    Coord2D generateRandomCoordinate(float particleSize, int window_x, int window_y)
     {
         Coord2D randomCoordinate;
 
-        float particleSize = 10.0f;
-
         float _xPosition = frandom(
             particleSize,
-            800 - particleSize);
+            window_x - particleSize - MARGIN);
 
         float _yPosition = frandom(
             particleSize,
-            600 - particleSize);
+            window_y - particleSize - MARGIN);
 
         randomCoordinate.x = _xPosition;
         randomCoordinate.y = _yPosition;

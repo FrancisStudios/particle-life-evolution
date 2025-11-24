@@ -30,7 +30,7 @@ namespace Util
 
     double frandom(double min, double max);
 
-    Coord2D generateRandomCoordinate();
+    Coord2D generateRandomCoordinate(float particleSize, int window_x, int window_y);
 };
 
 struct SimulationSize2D

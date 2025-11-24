@@ -51,7 +51,11 @@ void assembleEntitiesFromData(SimConfig &simulationConfig, Simulation &simulatio
 {
     for (int i = 0; i < simulationConfig.getEntityCount(); i++)
     {
-        Coord2D randomPosition = Util::generateRandomCoordinate();
+        Coord2D randomPosition = Util::generateRandomCoordinate(
+            simulationConfig.getParticleSize(),
+            simulationConfig.getSimulationSize().width,
+            simulationConfig.getSimulationSize().height
+        );
 
         simulation.getEntity(i).shape.setRadius(simulationConfig.getParticleSize());
         simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
