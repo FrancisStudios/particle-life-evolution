@@ -15,6 +15,7 @@
 #include "src/h/json.h"
 #include "src/h/simulationConfig.h"
 #include "src/h/simulation.h"
+#include "src/h/force.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
@@ -54,8 +55,7 @@ void assembleEntitiesFromData(SimConfig &simulationConfig, Simulation &simulatio
         Coord2D randomPosition = Util::generateRandomCoordinate(
             simulationConfig.getParticleSize(),
             simulationConfig.getSimulationSize().width,
-            simulationConfig.getSimulationSize().height
-        );
+            simulationConfig.getSimulationSize().height);
 
         simulation.getEntity(i).shape.setRadius(simulationConfig.getParticleSize());
         simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
@@ -136,6 +136,13 @@ int main()
         /* Entity Renderer Is Here */
         for (int i = 0; i < simulationConfig.getEntityCount(); i++)
         {
+            Coord2D _dFrom = {simulation.getEntity(i).shape.getPosition().x,
+                              simulation.getEntity(i).shape.getPosition().y};
+
+            Coord2D _dTo = {simulation.getEntity(i).shape.getPosition().x, //TODO: continue here
+                            simulation.getEntity(i).shape.getPosition().y};
+
+            float distance = Force::getDistance(_dFrom, _dTo);
             window.draw(simulation.getEntity(i).shape);
         }
 

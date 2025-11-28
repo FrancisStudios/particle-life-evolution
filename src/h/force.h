@@ -11,9 +11,11 @@
 
 #pragma once
 
+#include "util.h"
+
 namespace Force
 {
-
+    float getDistance(Coord2D from, Coord2D to);
 }
 
 #endif

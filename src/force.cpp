@@ -10,5 +10,8 @@
 
 namespace Force
 {
-
+    float getDistance(Coord2D from, Coord2D to)
+    {
+        return 10.0f;
+    }
 }
