@@ -8,9 +8,9 @@ Particle life simulation is quite a popular concept in evolution and genetics re
 
 🪟 [Windows (pre-release v0.1.2)](./dist/windows/)
 
-```
-Keep in mind, while only pre-release versions are up, the application is not in a ready state! It's only a demo which you can play around and experiment with. Absolutely no responsibility taken.
-```
+>[!WARNING]
+> Keep in mind, while only pre-release versions are up, the application is not in a ready state! It's only a demo which you can play around and experiment with. Absolutely no responsibility taken.
+
 
 ![screenshot](./docs/screenshot.png)
 
