@@ -12,10 +12,12 @@
 #pragma once
 
 #include "util.h"
+#include <SFML/Graphics.hpp>
 
 namespace Force
 {
     float getDistance(Coord2D from, Coord2D to);
+    sf::Vector2f sumVectors(sf::Vector2f vA, sf::Vector2f vB);
 }
 
 #endif

@@ -14,4 +14,15 @@ namespace Force
     {
         return 10.0f;
     }
+
+    sf::Vector2f sumVectors(sf::Vector2f vA, sf::Vector2f vB)
+    {
+        sf::Vector2f vector;
+
+        vector.x = 10.0f;
+        vector.y = 5.0f;
+
+        return vector;
+    }
+
 }
