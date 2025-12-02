@@ -37,15 +37,17 @@ namespace Entity
         string name;
         sf::Color color;
         float speed;
+        float detection_radius;
         Coord2D position;
         Coord2D direction;
 
-        Cell(string _name, sf::Color _color, float _speed, Coord2D _position, Coord2D _direction, sf::CircleShape shape)
+        Cell(string _name, sf::Color _color, float _speed,  float _detectionRadius, Coord2D _position, Coord2D _direction, sf::CircleShape _shape)
         {
-            shape = shape;
+            shape = _shape;
             name = _name;
             color = _color;
             speed = _speed;
+            detection_radius = _detectionRadius;
             position = _position;
             direction = _direction;
         }
@@ -56,6 +58,7 @@ namespace Entity
             name = BLANK_ENTITY_NAME;
             color = findColorByName(DEFAULT_COLOR);
             speed = DEFAULT_SPEED;
+            detection_radius = DEFAULT_SPEED;
             position = DEFAULT_VECTOR2DF;
             direction = DEFAULT_VECTOR2DF;
         }

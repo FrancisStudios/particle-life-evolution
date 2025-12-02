@@ -139,10 +139,15 @@ int main()
             Coord2D _dFrom = {simulation.getEntity(i).shape.getPosition().x,
                               simulation.getEntity(i).shape.getPosition().y};
 
-            Coord2D _dTo = {simulation.getEntity(i).shape.getPosition().x, //TODO: continue here
+            // TODO: ez itt egy külön for - continue here define _dTo
+
+            Coord2D _dTo = {simulation.getEntity(i).shape.getPosition().x,
                             simulation.getEntity(i).shape.getPosition().y};
 
             float distance = Force::getDistance(_dFrom, _dTo);
+
+            // TODO: </TODO>
+
             window.draw(simulation.getEntity(i).shape);
         }
 
