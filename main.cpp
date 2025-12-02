@@ -141,10 +141,23 @@ int main()
 
             // TODO: ez itt egy külön for - continue here define _dTo
 
-            Coord2D _dTo = {simulation.getEntity(i).shape.getPosition().x,
-                            simulation.getEntity(i).shape.getPosition().y};
+            for (int otherEntityIndex = 0; otherEntityIndex < simulationConfig.getEntityCount(); otherEntityIndex++)
+            {
+                int thisEntityIndex = i;
+                if (otherEntityIndex != thisEntityIndex)
+                {
 
-            float distance = Force::getDistance(_dFrom, _dTo);
+                    Coord2D _dTo = {simulation.getEntity(otherEntityIndex).shape.getPosition().x,
+                                    simulation.getEntity(otherEntityIndex).shape.getPosition().y};
+
+                    float distance = Force::getDistance(_dFrom, _dTo);
+
+                    if (distance <= simulation.getEntity(thisEntityIndex).detection_radius)
+                    {
+                        // TODO: create a vector depending on positions and relationship matrix
+                    }
+                }
+            }
 
             // TODO: </TODO>
 
