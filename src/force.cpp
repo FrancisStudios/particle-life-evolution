@@ -12,7 +12,12 @@ namespace Force
 {
     float getDistance(Coord2D from, Coord2D to)
     {
-        return 10.0f;
+        float dx = to.x - from.x;
+        float dy = to.y - from.y;
+
+        float pythagorasBlin = (dx * dx) + (dy * dy);
+
+        return std::sqrt(pythagorasBlin);
     }
 
     sf::Vector2f sumVectors(sf::Vector2f vA, sf::Vector2f vB)
