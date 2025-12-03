@@ -155,6 +155,7 @@ int main()
                     if (distance <= simulation.getEntity(thisEntityIndex).detection_radius)
                     {
                         // TODO: create a vector depending on positions and relationship matrix
+                        
                     }
                 }
             }

@@ -18,6 +18,14 @@ namespace Force
     sf::Vector2f sumVectors(sf::Vector2f vA, sf::Vector2f vB)
     {
         sf::Vector2f vector;
+        vector.x = vA.x + vB.x;
+        vector.y = vA.y + vB.y;
+        return vector;
+    }
+
+    sf::Vector2f createVector(sf::Vector2f vFrom, sf::Vector2f vTo, float vforce)
+    {
+        sf::Vector2f vector;
 
         vector.x = 10.0f;
         vector.y = 5.0f;
