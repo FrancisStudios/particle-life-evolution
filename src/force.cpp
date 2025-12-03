@@ -28,12 +28,12 @@ namespace Force
         return vector;
     }
 
-    sf::Vector2f createVector(sf::Vector2f vFrom, sf::Vector2f vTo, float vforce)
+    sf::Vector2f createVector(sf::Vector2f vFrom, sf::Vector2f vTo, float vForce)
     {
         sf::Vector2f vector;
 
-        vector.x = 10.0f;
-        vector.y = 5.0f;
+        vector.x = vForce * (vFrom.x + vTo.x);
+        vector.y = vForce * (vTo.y + vTo.y);
 
         return vector;
     }
