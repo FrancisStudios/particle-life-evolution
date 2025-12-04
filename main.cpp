@@ -136,10 +136,10 @@ int main()
         /* Entity Renderer Is Here */
         for (int i = 0; i < simulationConfig.getEntityCount(); i++)
         {
+            sf::Vector2f entityVectors[100 - 1]; // TODO: dynamic sizes in the future
+
             Coord2D _dFrom = {simulation.getEntity(i).shape.getPosition().x,
                               simulation.getEntity(i).shape.getPosition().y};
-
-            // TODO: ez itt egy külön for - continue here define _dTo
 
             for (int otherEntityIndex = 0; otherEntityIndex < simulationConfig.getEntityCount(); otherEntityIndex++)
             {
@@ -155,12 +155,14 @@ int main()
                     if (distance <= simulation.getEntity(thisEntityIndex).detection_radius)
                     {
                         // TODO: create a vector depending on positions and relationship matrix
-                        
                     }
                 }
             }
 
-            // TODO: </TODO>
+            while(false)
+            {
+                //TODO: reduce entityVectors to one and commit next position for shape + move
+            }
 
             window.draw(simulation.getEntity(i).shape);
         }
