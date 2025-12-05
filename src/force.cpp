@@ -36,4 +36,19 @@ namespace Force
         return vector;
     }
 
+    sf::Vector2f keepItInBounds(sf::Vector2f target, int xBound, int yBound)
+    {
+        // TODO: make a better algorythm later
+        sf::Vector2f vector;
+
+        target.x > xBound
+            ? vector.x = target.x - (float)xBound
+            : vector.x = target.x;
+
+        target.y > yBound
+            ? vector.y = target.y - (float)yBound
+            : vector.y = target.y;
+
+        return vector;
+    }
 }

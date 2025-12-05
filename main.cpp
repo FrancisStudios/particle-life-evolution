@@ -183,7 +183,13 @@ int main()
                 originVector.y = _dFrom.y;
             }
 
-            simulation.getEntity(thisEntityIndex).shape.move(originVector.x * dtAsSeconds, originVector.y * dtAsSeconds);
+            // Keep origin vector in screen bounds
+            originVector = Force::keepItInBounds(
+                originVector,
+                simulationConfig.getSimulationSize().width,
+                simulationConfig.getSimulationSize().height);
+
+            simulation.getEntity(thisEntityIndex).shape.move((_dFrom.x - originVector.x) * dtAsSeconds, (_dFrom.y - originVector.y) * dtAsSeconds);
             window.draw(simulation.getEntity(thisEntityIndex).shape);
         }
 
