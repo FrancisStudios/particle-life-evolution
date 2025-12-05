@@ -138,6 +138,7 @@ int main()
         {
             sf::Vector2f entityVectors[100 - 1]; // TODO: dynamic sizes in the future
             sf::Vector2f originVector;
+            int thisEntityIndex = i;
             int savedOtherEntity = 0;
             int reducedOtherEntity = 0;
 
@@ -146,10 +147,9 @@ int main()
 
             for (int otherEntityIndex = 0; otherEntityIndex < simulationConfig.getEntityCount(); otherEntityIndex++)
             {
-                int thisEntityIndex = i;
+
                 if (otherEntityIndex != thisEntityIndex)
                 {
-
                     Coord2D _dTo = {simulation.getEntity(otherEntityIndex).shape.getPosition().x,
                                     simulation.getEntity(otherEntityIndex).shape.getPosition().y};
 
@@ -172,13 +172,19 @@ int main()
             // Reduce entity vectors array.prototype.reduce() XD Javascript brain Francis
             while (savedOtherEntity != reducedOtherEntity)
             {
-                printf("Entityvectors x: %f, y: %f \n", entityVectors[reducedOtherEntity].x,  entityVectors[reducedOtherEntity].y);
+                originVector = Force::sumVectors(originVector, entityVectors[reducedOtherEntity]);
                 reducedOtherEntity++;
             }
 
-            printf("reduced\n");
+            // If vector is 0 then stay where it is
+            if (originVector.x == 0 && originVector.y == 0)
+            {
+                originVector.x = _dFrom.x;
+                originVector.y = _dFrom.y;
+            }
 
-            window.draw(simulation.getEntity(i).shape);
+            simulation.getEntity(thisEntityIndex).shape.move(originVector.x * dtAsSeconds, originVector.y * dtAsSeconds);
+            window.draw(simulation.getEntity(thisEntityIndex).shape);
         }
 
         window.draw(shape);
