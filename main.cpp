@@ -151,20 +151,25 @@ int main()
                     Coord2D _dTo = {simulation.getEntity(otherEntityIndex).shape.getPosition().x,
                                     simulation.getEntity(otherEntityIndex).shape.getPosition().y};
 
+                    sf::Vector2f otherEntityPos;
+                    otherEntityPos.x = _dTo.x;
+                    otherEntityPos.y = _dTo.y;
+
+                    float forceToOtherEntity = 1.0f; // TODO: get from sim
+
                     float distance = Force::getDistance(_dFrom, _dTo);
 
                     if (distance <= simulation.getEntity(thisEntityIndex).detection_radius)
                     {
-                        // TODO: create a vector depending on positions and relationship matrix
-                        entityVectors[savedOtherEntity] = Force::createVector();
+                        entityVectors[savedOtherEntity] = Force::createVector(otherEntityPos, forceToOtherEntity);
                         savedOtherEntity++;
                     }
                 }
             }
 
-            while(false)
+            while (false)
             {
-                //TODO: reduce entityVectors to one and commit next position for shape + move
+                // TODO: reduce entityVectors to one and commit next position for shape + move
             }
 
             window.draw(simulation.getEntity(i).shape);
