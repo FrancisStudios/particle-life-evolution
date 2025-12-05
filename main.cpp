@@ -144,6 +144,7 @@ int main()
             for (int otherEntityIndex = 0; otherEntityIndex < simulationConfig.getEntityCount(); otherEntityIndex++)
             {
                 int thisEntityIndex = i;
+                int savedOtherEntity = 0;
                 if (otherEntityIndex != thisEntityIndex)
                 {
 
@@ -155,6 +156,8 @@ int main()
                     if (distance <= simulation.getEntity(thisEntityIndex).detection_radius)
                     {
                         // TODO: create a vector depending on positions and relationship matrix
+                        entityVectors[savedOtherEntity] = Force::createVector();
+                        savedOtherEntity++;
                     }
                 }
             }
