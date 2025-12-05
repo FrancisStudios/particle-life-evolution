@@ -137,6 +137,9 @@ int main()
         for (int i = 0; i < simulationConfig.getEntityCount(); i++)
         {
             sf::Vector2f entityVectors[100 - 1]; // TODO: dynamic sizes in the future
+            sf::Vector2f originVector;
+            int savedOtherEntity = 0;
+            int reducedOtherEntity = 0;
 
             Coord2D _dFrom = {simulation.getEntity(i).shape.getPosition().x,
                               simulation.getEntity(i).shape.getPosition().y};
@@ -144,7 +147,6 @@ int main()
             for (int otherEntityIndex = 0; otherEntityIndex < simulationConfig.getEntityCount(); otherEntityIndex++)
             {
                 int thisEntityIndex = i;
-                int savedOtherEntity = 0;
                 if (otherEntityIndex != thisEntityIndex)
                 {
 
@@ -167,10 +169,14 @@ int main()
                 }
             }
 
-            while (false)
+            // Reduce entity vectors array.prototype.reduce() XD Javascript brain Francis
+            while (savedOtherEntity != reducedOtherEntity)
             {
-                // TODO: reduce entityVectors to one and commit next position for shape + move
+                printf("Entityvectors x: %f, y: %f \n", entityVectors[reducedOtherEntity].x,  entityVectors[reducedOtherEntity].y);
+                reducedOtherEntity++;
             }
+
+            printf("reduced\n");
 
             window.draw(simulation.getEntity(i).shape);
         }
