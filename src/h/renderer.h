@@ -10,13 +10,19 @@
 #define RENDERER_H
 
 #include "util.h"
+#include <SFML/Graphics.hpp>
+#include "simulationConfig.h"
+#include "simulation.h"
+#include "force.h"
 
 #pragma once
 
 namespace Renderer
 {
     void renderEntities();
-    bool loopingThroughEachEntity(int entitySelectionIndex);
+    bool loopingThroughEachEntity(int entityIndex, int entityCount);
+    bool loopingThroughOtherEntitiesForRelations(int observedEntityIndex, int otherEntityIndex, int entityCount);
+    bool isInDetectionRange(Coord2D &thisEntitysPosition, Coord2D &otherEntitysPosition, float thisEntitysDetectionRadius);
 }
 
 #endif
