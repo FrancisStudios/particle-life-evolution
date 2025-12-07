@@ -68,7 +68,7 @@
         {
             "from": "dwarf",
             "to": "goblin",
-            "strength": -0.8
+            "strength": 1
         },
         {
             "from": "dwarf",
