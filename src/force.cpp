@@ -30,6 +30,8 @@ namespace Force
 
     sf::Vector2f createVector(sf::Vector2f target, float force)
     {
+        // TODO: rethink this whole method to better fit sf::Shape.move();
+        // TODO: and to make it work better TBH
         sf::Vector2f vector;
         vector.x = target.x * force;
         vector.y = target.y * force;

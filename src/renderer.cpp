@@ -7,7 +7,7 @@
  */
 
 #include "./h/renderer.h"
-const bool isStarted = false;
+const bool isSimulationStarted = false;
 
 namespace Renderer
 {
@@ -19,7 +19,7 @@ namespace Renderer
 
         const int entityCount = simulationConfig.getEntityCount();
 
-        /* Looping through each entity to map out their relations */
+        /* 1) Looping through each entity to map out their relations */
         int thisEntityIndex = 0;
         while (loopingThroughEachEntity(thisEntityIndex, entityCount))
         {
@@ -27,9 +27,12 @@ namespace Renderer
                 simulation.getEntity(thisEntityIndex).shape.getPosition().x,
                 simulation.getEntity(thisEntityIndex).shape.getPosition().y};
 
-            float thisEntitysDetectionRadius = simulation.getEntity(thisEntityIndex).detection_radius;
+            sf::Vector2f thisEntitysVectors[100-1]; //TODO: dynamics sizing in a future ver;
 
-            /* Comparing with every other entity who is in range */
+            float thisEntitysDetectionRadius = simulation.getEntity(thisEntityIndex).detection_radius;
+            int nextThisEntitysVectorIndex = 0;
+
+            /* 2) Comparing with every other entity who is in range */
             int comparedEntityIndex = 0;
             while (loopingThroughOtherEntitiesForRelations(
                 thisEntityIndex,
@@ -40,14 +43,17 @@ namespace Renderer
                     simulation.getEntity(comparedEntityIndex).shape.getPosition().x,
                     simulation.getEntity(comparedEntityIndex).shape.getPosition().y};
 
-                if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius))
+                if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
+                    float forceToOtherEntity = 1.0f; 
+                    //thisEntitysVectors[nextThisEntitysVectorIndex] = Force::createVector(otherEntitysPosition, forceToOtherEntity); 
+                    //TODO: rethink create vector function in force so it's more native to SFML renderer or rather sf::Shape.move() method
                 }
 
                 comparedEntityIndex++;
             }
 
-            //window.draw(simulation.getEntity(thisEntitysIndex).shape)
+            // window.draw(simulation.getEntity(thisEntitysIndex).shape)
             thisEntityIndex++;
         }
     }
