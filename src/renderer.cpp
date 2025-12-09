@@ -27,7 +27,8 @@ namespace Renderer
                 simulation.getEntity(thisEntityIndex).shape.getPosition().x,
                 simulation.getEntity(thisEntityIndex).shape.getPosition().y};
 
-            sf::Vector2f thisEntitysVectors[100-1]; //TODO: dynamics sizing in a future ver;
+            sf::Vector2f thisEntitysVectors[100 - 1]; // TODO: dynamics sizing in a future ver;
+            sf::Vector2f originVector;
 
             float thisEntitysDetectionRadius = simulation.getEntity(thisEntityIndex).detection_radius;
             int nextThisEntitysVectorIndex = 0;
@@ -45,12 +46,22 @@ namespace Renderer
 
                 if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
-                    float forceToOtherEntity = 1.0f; 
-                    //thisEntitysVectors[nextThisEntitysVectorIndex] = Force::createVector(otherEntitysPosition, forceToOtherEntity); 
-                    //TODO: rethink create vector function in force so it's more native to SFML renderer or rather sf::Shape.move() method
+                    // TODO: import force from JSON | that would need a big breath to think all through
+                    float forceToOtherEntity = nextThisEntitysVectorIndex % 2 == 0 ? 1.0f : -1.0f;
+
+                    /* 3) Creating a vector depending on the neighbours and where it should go*/
+                    thisEntitysVectors[nextThisEntitysVectorIndex] = Force::createVectorNew(
+                        thisEntitysPosition,
+                        otherEntitysPosition,
+                        forceToOtherEntity);
                 }
 
                 comparedEntityIndex++;
+            }
+
+            /* 4) Summarizing all vectors into one origin vector*/
+            while (true)
+            {
             }
 
             // window.draw(simulation.getEntity(thisEntitysIndex).shape)
