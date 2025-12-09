@@ -38,6 +38,21 @@ namespace Force
         return vector;
     }
 
+    sf::Vector2f createVectorNew(sf::Vector2f from, sf::Vector2f to, float force)
+    {
+        //1) Determine how many steps do we have to take to reach the spot
+        // from "from" to get to "to" so we can use the sf::Shape.move()
+        float xDifference = from.x - to.x;
+        float yDifference = from.y - to.y;
+
+        //2) We have to determine the direction of the coordinates to make
+        // the signs correct
+
+        
+    }
+
+
+
     sf::Vector2f keepItInBounds(sf::Vector2f target, int xBound, int yBound)
     {
         // TODO: make a better algorythm later
