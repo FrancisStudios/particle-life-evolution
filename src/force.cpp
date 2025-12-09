@@ -42,30 +42,22 @@ namespace Force
     {
         sf::Vector2f output;
 
-        //1) Determine how many steps do we have to take to reach the spot
-        // from "from" to get to "to" so we can use the sf::Shape.move()
+        // 1) Determine how many steps do we have to take to reach the spot
+        //  from "from" to get to "to" so we can use the sf::Shape.move()
         float xDifference = from.x - to.x;
         float yDifference = from.y - to.y;
 
-        //2) We have to determine the direction of the coordinates to make
-        // the signs correct
-        if(from.x > from.y)
-        {
+        // 2) We have to invert signs to have the correct direction for the
+        // two cases
+        xDifference = xDifference * -1;
+        yDifference = yDifference * -1;
 
-        }
-
-        if(from.y > to.y)
-        {
-
-        }
-
-        //3) Use the force, anakin use the force :D :D :D :D - I'm so funny 
-        
+        // 3) Use the force, anakin use the force :D :D :D :D - I'm so funny
+        output.x = xDifference * force;
+        output.y = yDifference * force;
 
         return output;
     }
-
-
 
     sf::Vector2f keepItInBounds(sf::Vector2f target, int xBound, int yBound)
     {
