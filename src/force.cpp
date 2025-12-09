@@ -40,6 +40,8 @@ namespace Force
 
     sf::Vector2f createVectorNew(sf::Vector2f from, sf::Vector2f to, float force)
     {
+        sf::Vector2f output;
+
         //1) Determine how many steps do we have to take to reach the spot
         // from "from" to get to "to" so we can use the sf::Shape.move()
         float xDifference = from.x - to.x;
@@ -47,8 +49,20 @@ namespace Force
 
         //2) We have to determine the direction of the coordinates to make
         // the signs correct
+        if(from.x > from.y)
+        {
 
+        }
+
+        if(from.y > to.y)
+        {
+
+        }
+
+        //3) Use the force, anakin use the force :D :D :D :D - I'm so funny 
         
+
+        return output;
     }
 
 
