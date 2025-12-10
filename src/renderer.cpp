@@ -11,7 +11,6 @@ const bool isSimulationStarted = true;
 
 namespace Renderer
 {
-    // TODO: get window reference from main
     void renderEntities(sf::RenderWindow &window, float deltaTimeS)
     {
         SimConfig &simulationConfig = SimConfig::getInstance();
