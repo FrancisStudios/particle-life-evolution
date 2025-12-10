@@ -16,6 +16,7 @@
 #include "src/h/simulationConfig.h"
 #include "src/h/simulation.h"
 #include "src/h/force.h"
+#include "src/h/renderer.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
@@ -133,65 +134,7 @@ int main()
         if (debugMode)
             window.draw(debugHUD);
 
-        /* Entity Renderer Is Here */
-        for (int i = 0; i < simulationConfig.getEntityCount(); i++)
-        {
-            sf::Vector2f entityVectors[100 - 1]; // TODO: dynamic sizes in the future
-            sf::Vector2f originVector;
-            int thisEntityIndex = i;
-            int savedOtherEntity = 0;
-            int reducedOtherEntity = 0;
-
-            Coord2D _dFrom = {simulation.getEntity(i).shape.getPosition().x,
-                              simulation.getEntity(i).shape.getPosition().y};
-
-            for (int otherEntityIndex = 0; otherEntityIndex < simulationConfig.getEntityCount(); otherEntityIndex++)
-            {
-
-                if (otherEntityIndex != thisEntityIndex)
-                {
-                    Coord2D _dTo = {simulation.getEntity(otherEntityIndex).shape.getPosition().x,
-                                    simulation.getEntity(otherEntityIndex).shape.getPosition().y};
-
-                    sf::Vector2f otherEntityPos;
-                    otherEntityPos.x = _dTo.x;
-                    otherEntityPos.y = _dTo.y;
-
-                    float forceToOtherEntity = 1.0f; // TODO: get from sim
-
-                    float distance = Force::getDistance(_dFrom, _dTo);
-
-                    if (distance <= simulation.getEntity(thisEntityIndex).detection_radius)
-                    {
-                        entityVectors[savedOtherEntity] = Force::createVector(otherEntityPos, forceToOtherEntity);
-                        savedOtherEntity++;
-                    }
-                }
-            }
-
-            // Reduce entity vectors array.prototype.reduce() XD Javascript brain Francis
-            while (savedOtherEntity != reducedOtherEntity)
-            {
-                originVector = Force::sumVectors(originVector, entityVectors[reducedOtherEntity]);
-                reducedOtherEntity++;
-            }
-
-            // If vector is 0 then stay where it is
-            if (originVector.x == 0 && originVector.y == 0)
-            {
-                originVector.x = _dFrom.x;
-                originVector.y = _dFrom.y;
-            }
-
-            // Keep origin vector in screen bounds
-            originVector = Force::keepItInBounds(
-                originVector,
-                simulationConfig.getSimulationSize().width,
-                simulationConfig.getSimulationSize().height);
-
-            simulation.getEntity(thisEntityIndex).shape.move((_dFrom.x - originVector.x) * dtAsSeconds, (_dFrom.y - originVector.y) * dtAsSeconds);
-            window.draw(simulation.getEntity(thisEntityIndex).shape);
-        }
+        Renderer::renderEntities(window, dtAsSeconds);
 
         window.draw(shape);
         window.draw(controlHUD);

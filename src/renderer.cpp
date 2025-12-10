@@ -7,12 +7,12 @@
  */
 
 #include "./h/renderer.h"
-const bool isSimulationStarted = false;
+const bool isSimulationStarted = true;
 
 namespace Renderer
 {
     // TODO: get window reference from main
-    void renderEntities()
+    void renderEntities(sf::RenderWindow &window, float deltaTimeS)
     {
         SimConfig &simulationConfig = SimConfig::getInstance();
         Simulation &simulation = Simulation::getInstance();
@@ -70,8 +70,11 @@ namespace Renderer
             }
 
             /* 5) Keep origin vector in screen bounds */
+            // originVector = Force::keepItInBounds();
 
-            // window.draw(simulation.getEntity(thisEntitysIndex).shape)
+            /* 6) Move and render the entities - finally*/
+            simulation.getEntity(thisEntityIndex).shape.move(originVector.x * deltaTimeS, originVector.y * deltaTimeS);
+            window.draw(simulation.getEntity(thisEntityIndex).shape);
             thisEntityIndex++;
         }
     }

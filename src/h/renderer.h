@@ -19,7 +19,7 @@
 
 namespace Renderer
 {
-    void renderEntities();
+    void renderEntities(sf::RenderWindow &window, float deltaTimeS);
     bool loopingThroughEachEntity(int entityIndex, int entityCount);
     bool loopingThroughOtherEntitiesForRelations(int observedEntityIndex, int otherEntityIndex, int entityCount);
     bool isInDetectionRange(Coord2D &thisEntitysPosition, Coord2D &otherEntitysPosition, float thisEntitysDetectionRadius);
