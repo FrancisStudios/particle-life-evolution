@@ -28,7 +28,8 @@ namespace Renderer
                 simulation.getEntity(thisEntityIndex).shape.getPosition().y};
 
             sf::Vector2f thisEntitysVectors[100 - 1]; // TODO: dynamics sizing in a future ver;
-            sf::Vector2f originVector;
+            int savedToThisEntityVectors = 0, processedEntityVectors = 0;
+            sf::Vector2f originVector = {0.0f, 0.0f};
 
             float thisEntitysDetectionRadius = simulation.getEntity(thisEntityIndex).detection_radius;
             int nextThisEntitysVectorIndex = 0;
@@ -54,15 +55,21 @@ namespace Renderer
                         thisEntitysPosition,
                         otherEntitysPosition,
                         forceToOtherEntity);
+
+                    savedToThisEntityVectors++;
                 }
 
                 comparedEntityIndex++;
             }
 
             /* 4) Summarizing all vectors into one origin vector*/
-            while (true)
+            while (savedToThisEntityVectors != processedEntityVectors)
             {
+                originVector = Force::sumVectors(originVector, thisEntitysVectors[0]);
+                processedEntityVectors++;
             }
+
+            /* 5) Keep origin vector in screen bounds */
 
             // window.draw(simulation.getEntity(thisEntitysIndex).shape)
             thisEntityIndex++;
