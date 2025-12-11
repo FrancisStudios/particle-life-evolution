@@ -23,5 +23,7 @@ namespace JSONOps
 
     template <typename T, typename JSONData>
     T getFromSimConfig(const JSONData &data, const std::string &key);
+
+    void parseForceVectors(nlohmann::json &data);
 }
 #endif

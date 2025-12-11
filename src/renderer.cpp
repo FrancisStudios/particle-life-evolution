@@ -47,6 +47,8 @@ namespace Renderer
                 if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
                     // TODO: import force from JSON | that would need a big breath to think all through
+                    // TODO: next thing to do is this!!! Otherwise other parts work fine - next after is
+                    // TODO: keep in bounds algorythm Force::keepInBounds();
                     float forceToOtherEntity = nextThisEntitysVectorIndex % 2 == 0 ? 1.0f : -1.0f;
 
                     /* 3) Creating a vector depending on the neighbours and where it should go*/

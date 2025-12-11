@@ -40,9 +40,7 @@ namespace JSONOps
                     {
                         logger.print(CONFIG_FILE_ACCEPT, 1);
 
-                        /**
-                         * Getting Different parameters from JSON sim config file
-                         */
+                        /* 1) Getting basic params from JSON */
                         float _particleSize = getFromSimConfig<float>(data, "particle-size");
                         std::string _entitySpawnSeed = getFromSimConfig<std::string>(data, "entity-spawn-seed");
                         int _entityCount = getFromSimConfig<int>(data, "entity-count");
@@ -50,8 +48,7 @@ namespace JSONOps
 
                         if (isSpeciesCountValid(_speciesCount))
                         {
-
-                            /* Storing JSON file params in simulation config  */
+                            /* 2) Storing JSON file params in simulation config  */
                             simulationConfig.setParticleSize(_particleSize);
                             simulationConfig.setSeed(_entitySpawnSeed);
                             simulationConfig.setEntityCount(_entityCount);
@@ -62,10 +59,11 @@ namespace JSONOps
                             simSize.height = (int)data["simulation-size"]["height"];
                             simulationConfig.setSimulationSize(simSize);
 
-                            Generator::createEntities(data);
+                            /* 3) Parse force data */
+                            parseForceVectors(data);
 
-                            // printf("species name: %s\n", ((std::string)data["species"][0]["name"]).c_str());
-                            // printf("Entity count: %i\n", simulationConfig.getEntityCount());
+                            /* 4) Generate Entities */
+                            Generator::createEntities(data);
                         }
                         else
                         {
@@ -98,5 +96,9 @@ namespace JSONOps
     T getFromSimConfig(const JSONData &data, const std::string &key)
     {
         return (T)data[key];
+    }
+
+    void parseForceVectors(json &data)
+    {
     }
 }
