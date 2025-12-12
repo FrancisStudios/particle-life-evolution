@@ -7,11 +7,10 @@
  */
 
 #include "./h/renderer.h"
-const bool isSimulationStarted = true;
 
 namespace Renderer
 {
-    void renderEntities(sf::RenderWindow &window, float deltaTimeS)
+    void renderEntities(sf::RenderWindow &window, float deltaTimeS, bool isSimulationStarted)
     {
         SimConfig &simulationConfig = SimConfig::getInstance();
         Simulation &simulation = Simulation::getInstance();
@@ -85,7 +84,9 @@ namespace Renderer
             // TODO: originVector = Force::keepItInBounds();
             // TODO: this is the next step for success
 
-            /* 6) Move and render the entities - finally*/
+            /* 6) Brown movement for entities with 0 vectors*/
+
+            /* 7) Move and render the entities - finally*/
             simulation.getEntity(thisEntityIndex).shape.move(originVector.x * deltaTimeS, originVector.y * deltaTimeS);
             window.draw(simulation.getEntity(thisEntityIndex).shape);
             thisEntityIndex++;

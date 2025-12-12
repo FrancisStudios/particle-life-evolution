@@ -134,7 +134,7 @@ int main()
         if (debugMode)
             window.draw(debugHUD);
 
-        Renderer::renderEntities(window, dtAsSeconds);
+        Renderer::renderEntities(window, dtAsSeconds, true);
 
         window.draw(shape);
         window.draw(controlHUD);

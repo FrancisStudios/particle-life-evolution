@@ -58,7 +58,7 @@
         {
             "from": "rotblud",
             "to": "dwarf",
-            "strength": 0.6
+            "strength": 0.7
         },
         {
             "from": "rotblud",
@@ -78,7 +78,7 @@
         {
             "from": "dwarf",
             "to": "elf",
-            "strength": -0.2
+            "strength": -0.7
         },
         {
             "from": "elf",
