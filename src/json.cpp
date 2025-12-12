@@ -100,6 +100,10 @@ namespace JSONOps
         return (T)data[key];
     }
 
+    /**
+     * Parsing "forces" into simulationConfig::entityForces[] for processing
+     * in renderer.
+     */
     void parseForceVectors(nlohmann::json_abi_v3_12_0::json &data)
     {
         int addedForceVectors = 0;

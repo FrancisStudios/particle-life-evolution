@@ -13,25 +13,25 @@
             "name": "goblin",
             "color": "green",
             "speed": 100,
-            "detection-radius": 50.0
+            "detection-radius": 100.0
         },
         {
             "name": "rotblud",
             "color": "red",
             "speed": 80,
-            "detection-radius": 50.0
+            "detection-radius": 100.0
         },
         {
             "name": "dwarf",
             "color": "yellow",
             "speed": 95,
-            "detection-radius": 50.0
+            "detection-radius": 100.0
         },
         {
             "name": "elf",
             "color": "blue",
             "speed": 97,
-            "detection-radius": 50.0
+            "detection-radius": 100.0
         }
     ],
     "forces": [

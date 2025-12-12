@@ -46,10 +46,21 @@ namespace Renderer
 
                 if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
-                    // TODO: import force from JSON | that would need a big breath to think all through
-                    // TODO: next thing to do is this!!! Otherwise other parts work fine - next after is
-                    // TODO: keep in bounds algorythm Force::keepInBounds();
-                    float forceToOtherEntity = nextThisEntitysVectorIndex % 2 == 0 ? 1.0f : -1.0f;
+                    float forceToOtherEntity = 0.0f;
+
+                    for (int forcesParser = 0; forcesParser < simulationConfig.getForceVectorCount(); forcesParser++)
+                    {
+                        const std::string thisEntitysName = simulation.getEntity(thisEntityIndex).name;
+                        const std::string otherEntitysName = simulation.getEntity(comparedEntityIndex).name;
+                        const std::string fromName = simulationConfig.entityForces[forcesParser].from;
+                        const std::string toName = simulationConfig.entityForces[forcesParser].to;
+
+                        bool thisEntityMatch = (strcmp(thisEntitysName.c_str(), fromName.c_str()) == 0);
+                        bool otherEntityMatch = (strcmp(otherEntitysName.c_str(), toName.c_str()) == 0);
+
+                        if (thisEntityMatch && otherEntityMatch)
+                            forceToOtherEntity = (float)simulationConfig.entityForces[forcesParser].force;
+                    }
 
                     /* 3) Creating a vector depending on the neighbours and where it should go*/
                     thisEntitysVectors[nextThisEntitysVectorIndex] = Force::createVectorNew(
@@ -71,7 +82,8 @@ namespace Renderer
             }
 
             /* 5) Keep origin vector in screen bounds */
-            // originVector = Force::keepItInBounds();
+            // TODO: originVector = Force::keepItInBounds();
+            // TODO: this is the next step for success
 
             /* 6) Move and render the entities - finally*/
             simulation.getEntity(thisEntityIndex).shape.move(originVector.x * deltaTimeS, originVector.y * deltaTimeS);
