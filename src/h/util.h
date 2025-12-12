@@ -38,4 +38,11 @@ struct SimulationSize2D
     int width;
     int height;
 };
+
+struct ForceVector
+{
+    std::string from;
+    std::string to;
+    float force;
+};
 #endif
