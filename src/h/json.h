@@ -15,6 +15,7 @@
 #include "logger.h"
 #include "simulationConfig.h"
 #include "generator.h"
+#include "util.h"
 
 namespace JSONOps
 {
@@ -24,6 +25,6 @@ namespace JSONOps
     template <typename T, typename JSONData>
     T getFromSimConfig(const JSONData &data, const std::string &key);
 
-    void parseForceVectors(nlohmann::json &data);
+    void parseForceVectors(nlohmann::json_abi_v3_12_0::json &data);
 }
 #endif

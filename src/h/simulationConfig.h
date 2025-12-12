@@ -28,6 +28,7 @@ private:
     int speciesCount;
 
 public:
+    ForceVector entityForces[12]; // TODO: make it dynamic
     static SimConfig &getInstance();
     void setParticleSize(float particleSize);
     float getParticleSize();
@@ -39,6 +40,7 @@ public:
     int getSpeciesCount();
     void setSimulationSize(SimulationSize2D &simulationSize);
     SimulationSize2D &getSimulationSize();
+    int getForceVectorCount();
 };
 
 #endif

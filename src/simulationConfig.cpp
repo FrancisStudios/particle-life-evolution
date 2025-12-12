@@ -63,3 +63,9 @@ SimulationSize2D &SimConfig::getSimulationSize()
 {
     return SimConfig::simulationSize;
 }
+
+int SimConfig::getForceVectorCount()
+{
+    int _value = SimConfig::speciesCount * (SimConfig::speciesCount - 1);
+    return _value;
+}

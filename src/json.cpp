@@ -14,6 +14,8 @@
 #define CONFIG_FILE_DENY "Invalid config file version"
 #define INVALID_SPECIES_COUNT "Species count can range between 2 and 8"
 
+#define FORCES "forces"
+
 #include "./h/json.h"
 
 using json = nlohmann::json;
@@ -98,7 +100,22 @@ namespace JSONOps
         return (T)data[key];
     }
 
-    void parseForceVectors(json &data)
+    void parseForceVectors(nlohmann::json_abi_v3_12_0::json &data)
     {
+        int addedForceVectors = 0;
+        while (addedForceVectors < simulationConfig.getForceVectorCount())
+        {
+            int iterator = addedForceVectors;
+
+            ForceVector newForceVector;
+            newForceVector.from = (std::string)data[FORCES][iterator]["from"];
+            newForceVector.to = (std::string)data[FORCES][iterator]["to"];
+            newForceVector.force = (float)data[FORCES][iterator]["strength"];
+
+            simulationConfig
+                .entityForces[iterator] = newForceVector;
+
+            addedForceVectors++;
+        }
     }
 }
