@@ -72,4 +72,10 @@ namespace Force
 
         return vector;
     }
+
+    void brownMovementsActivator(sf::Vector2f &originVector)
+    {
+        originVector.x = Util::frandom(-1.0f, 1.0f);
+        originVector.y = Util::frandom(-1.0f, 1.0f);
+    }
 }

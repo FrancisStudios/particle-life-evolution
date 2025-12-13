@@ -21,6 +21,7 @@ namespace Force
     sf::Vector2f createVector(sf::Vector2f target, float force);
     sf::Vector2f createVectorNew(Coord2D &from, Coord2D &to, float force);
     sf::Vector2f keepItInBounds(sf::Vector2f target, int xBound, int yBound);
+    void brownMovementsActivator(sf::Vector2f &originVector);
 }
 
 #endif

@@ -24,13 +24,13 @@
         {
             "name": "dwarf",
             "color": "yellow",
-            "speed": 95,
+            "speed": 30,
             "detection-radius": 100.0
         },
         {
             "name": "elf",
             "color": "blue",
-            "speed": 97,
+            "speed": 15,
             "detection-radius": 100.0
         }
     ],
