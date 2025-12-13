@@ -16,7 +16,7 @@
 
 namespace Force
 {
-    float getDistance(Coord2D from, Coord2D to);
+    float getDistance(const Coord2D &from, const Coord2D &to);
     sf::Vector2f sumVectors(sf::Vector2f vA, sf::Vector2f vB);
     sf::Vector2f createVector(sf::Vector2f target, float force);
     sf::Vector2f createVectorNew(Coord2D &from, Coord2D &to, float force);

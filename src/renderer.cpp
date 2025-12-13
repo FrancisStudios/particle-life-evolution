@@ -87,10 +87,10 @@ namespace Renderer
             // TODO: this is the next step for success
 
             /* 6) Brown movement for entities with 0 vectors*/
-            bool originVectorXCriteria = (originVector.x > -1.0f) && (originVector.x < 1.0f);
-            bool originVectorYCriteria = (originVector.y > -1.0f) && (originVector.y < 1.0f);
-            if (originVectorXCriteria && originVectorYCriteria)
-                Force::brownMovementsActivator(originVector);
+            // bool originVectorXCriteria = (originVector.x > -1.0f) && (originVector.x < 1.0f);
+            // bool originVectorYCriteria = (originVector.y > -1.0f) && (originVector.y < 1.0f);
+            // if (originVectorXCriteria && originVectorYCriteria)
+            //     Force::brownMovementsActivator(originVector);
 
             /* 7) Move and render the entities - finally*/
             simulation

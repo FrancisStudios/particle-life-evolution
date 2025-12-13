@@ -10,7 +10,7 @@
 
 namespace Force
 {
-    float getDistance(Coord2D from, Coord2D to)
+    float getDistance(const Coord2D &from, const Coord2D &to)
     {
         float dx = to.x - from.x;
         float dy = to.y - from.y;
@@ -40,15 +40,19 @@ namespace Force
     {
         sf::Vector2f output;
 
+        // 0) Determine distance between the two entities so closer entities
+        //    should have an elevated effect instead of further ones.
+        float d = Force::getDistance({from.x, from.y}, {to.x, to.y});
+
         // 1) Determine how many steps do we have to take to reach the spot
-        //  from "from" to get to "to" so we can use the sf::Shape.move()
+        //    from "from" to get to "to" so we can use the sf::Shape.move()
         float xDifference = from.x - to.x;
         float yDifference = from.y - to.y;
 
         // 2) We have to invert signs to have the correct direction for the
-        // two cases
-        xDifference = xDifference * -1;
-        yDifference = yDifference * -1;
+        //    two cases
+        xDifference = ((1 / pow(d, 2)) * 100 * xDifference) * -1;
+        yDifference = ((1 / pow(d, 2)) * 100 * yDifference) * -1;
 
         // 3) Use the force, anakin use the force :D :D :D :D - I'm so funny
         output.x = xDifference * force;
