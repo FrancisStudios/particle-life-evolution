@@ -36,7 +36,7 @@ namespace Force
         return vector;
     }
 
-    sf::Vector2f createVectorNew(Coord2D from, Coord2D to, float force)
+    sf::Vector2f createVectorNew(Coord2D &from, Coord2D &to, float force)
     {
         sf::Vector2f output;
 
