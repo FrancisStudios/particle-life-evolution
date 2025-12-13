@@ -47,7 +47,7 @@ namespace Renderer
 
                 if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
-                    float forceToOtherEntity = 0.0f;
+                    float forceToOtherEntity;
 
                     for (int forcesParser = 0; forcesParser < simulationConfig.getForceVectorCount(); forcesParser++)
                     {
@@ -59,15 +59,17 @@ namespace Renderer
                         bool thisEntityMatch = (strcmp(thisEntitysName.c_str(), fromName.c_str()) == 0);
                         bool otherEntityMatch = (strcmp(otherEntitysName.c_str(), toName.c_str()) == 0);
 
-                        if (thisEntityMatch && otherEntityMatch)
-                            forceToOtherEntity = (float)simulationConfig.entityForces[forcesParser].force;
+                        forceToOtherEntity = (thisEntityMatch && otherEntityMatch)
+                                                 ? (float)simulationConfig.entityForces[forcesParser].force
+                                                 : 0.0f;
                     }
 
                     /* 3) Creating a vector depending on the neighbours and where it should go*/
-                    thisEntitysVectors[nextThisEntitysVectorIndex] = Force::createVectorNew(
+                    thisEntitysVectors[nextThisEntitysVectorIndex] = Force::createVector(
                         thisEntitysPosition,
                         otherEntitysPosition,
-                        forceToOtherEntity);
+                        forceToOtherEntity,
+                        simulationConfig.getParticleSize());
 
                     savedToThisEntityVectors++;
                 }
@@ -86,11 +88,15 @@ namespace Renderer
             // TODO: originVector = Force::keepItInBounds();
             // TODO: this is the next step for success
 
-            /* 6) Brown movement for entities with 0 vectors*/
-            // bool originVectorXCriteria = (originVector.x > -1.0f) && (originVector.x < 1.0f);
-            // bool originVectorYCriteria = (originVector.y > -1.0f) && (originVector.y < 1.0f);
-            // if (originVectorXCriteria && originVectorYCriteria)
-            //     Force::brownMovementsActivator(originVector);
+            /* 6) Brown movement for entities with close to 0 vectors - TEST BROWN FEATURE */
+            bool originVectorXCriteria = (originVector.x > -1.0f) && (originVector.x < 1.0f);
+            bool originVectorYCriteria = (originVector.y > -1.0f) && (originVector.y < 1.0f);
+
+            if (originVectorXCriteria && originVectorYCriteria)
+            {
+                originVector.x = Util::frandom(-200.0f, 200.0f);
+                originVector.y = Util::frandom(-200.0f, 200.0f);
+            }
 
             /* 7) Move and render the entities - finally*/
             simulation

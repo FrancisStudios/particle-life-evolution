@@ -28,35 +28,33 @@ namespace Force
         return vector;
     }
 
-    sf::Vector2f createVector(sf::Vector2f target, float force)
-    {
-        sf::Vector2f vector;
-        vector.x = target.x * force;
-        vector.y = target.y * force;
-        return vector;
-    }
-
-    sf::Vector2f createVectorNew(Coord2D &from, Coord2D &to, float force)
+    sf::Vector2f createVector(Coord2D &from, Coord2D &to, float force, float particleSize)
     {
         sf::Vector2f output;
 
-        // 0) Determine distance between the two entities so closer entities
+        // 1) Determine distance between the two entities so closer entities
         //    should have an elevated effect instead of further ones.
         float d = Force::getDistance({from.x, from.y}, {to.x, to.y});
 
-        // 1) Determine how many steps do we have to take to reach the spot
+        // 2) Determine how many steps do we have to take to reach the spot
         //    from "from" to get to "to" so we can use the sf::Shape.move()
         float xDifference = from.x - to.x;
         float yDifference = from.y - to.y;
 
-        // 2) We have to invert signs to have the correct direction for the
+        // 3) We have to invert signs to have the correct direction for the
         //    two cases
-        xDifference = ((1 / pow(d, 2)) * 100 * xDifference) * -1;
-        yDifference = ((1 / pow(d, 2)) * 100 * yDifference) * -1;
+        xDifference = (((1 / d) * 100) * xDifference) * -1;
+        yDifference = (((1 / d) * 100) * yDifference) * -1;
 
-        // 3) Use the force, anakin use the force :D :D :D :D - I'm so funny
+        // 4) Use the force, anakin use the force :D :D :D :D - I'm so funny
         output.x = xDifference * force;
         output.y = yDifference * force;
+
+        // 5) If the force is positive we should block overlapping entities
+        // this force nullifies the force if it tries to overlap TODO nicer
+        ((d <= particleSize * 2) && (force > 0))
+            ? output = {0.0f, 0.0f}
+            : output = output;
 
         return output;
     }
