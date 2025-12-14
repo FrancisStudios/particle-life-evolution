@@ -27,7 +27,12 @@
 
 int main()
 {
+    /**
+     * Setup process - general variables and class initializations
+     * ======== This is where all the control flow starts ========
+     */
     JSONOps::loadSimulatorConfig(SIM_CONFIG);
+
     SimConfig &simulationConfig = SimConfig::getInstance();
     Simulation &simulation = Simulation::getInstance();
 
@@ -48,15 +53,16 @@ int main()
 
     log.turnOnLogger();
 
-    sf::CircleShape shape(simulationConfig.getParticleSize());
-
-    shape.setFillColor(sf::Color::Green);
-    shape.setPosition(395.0f, 295.0f);
-
-    /* Statical Processes Should Come Here - maybe reorg later */
+    /**
+     * ================= [Statical Processes] =================
+     * Like preprocessing data or setting up pre-simulation vars.
+     */
     Generator::assembleEntitiesForRender();
 
-    /* Dynamical Processes Should Come Here - maybe reorg later */
+    /**
+     * ================= [Game Loop Process] =================
+     * Simulation frame processing is down below - EZ as that. 
+     */
     while (window.isOpen())
     {
         sf::Event event;
