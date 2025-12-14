@@ -38,32 +38,32 @@
         {
             "from": "goblin",
             "to": "rotblud",
-            "strength": 0.0
+            "strength": 1
         },
         {
             "from": "goblin",
             "to": "dwarf",
-            "strength": -0.9
+            "strength": 1
         },
         {
             "from": "goblin",
             "to": "elf",
-            "strength": 0.1
+            "strength": 1
         },
         {
             "from": "rotblud",
             "to": "goblin",
-            "strength": 0.3
+            "strength": 1
         },
         {
             "from": "rotblud",
             "to": "dwarf",
-            "strength": 0.7
+            "strength": 1
         },
         {
             "from": "rotblud",
             "to": "elf",
-            "strength": -0.4
+            "strength": 1
         },
         {
             "from": "dwarf",
@@ -73,27 +73,27 @@
         {
             "from": "dwarf",
             "to": "rotblud",
-            "strength": 0.7
+            "strength": 1
         },
         {
             "from": "dwarf",
             "to": "elf",
-            "strength": -0.7
+            "strength": 1
         },
         {
             "from": "elf",
             "to": "goblin",
-            "strength": -0.1
+            "strength": 1
         },
         {
             "from": "elf",
             "to": "rotblud",
-            "strength": -0.5
+            "strength": 1
         },
         {
             "from": "elf",
             "to": "dwarf",
-            "strength": 0.4
+            "strength": 1
         }
     ]
 }

@@ -15,7 +15,8 @@ namespace Renderer
         SimConfig &simulationConfig = SimConfig::getInstance();
         Simulation &simulation = Simulation::getInstance();
 
-        const int entityCount = simulationConfig.getEntityCount();
+        const int entityCount = simulationConfig
+                                    .getEntityCount();
 
         /* 1) Looping through each entity to map out their relations */
         int thisEntityIndex = 0;
@@ -47,21 +48,11 @@ namespace Renderer
 
                 if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
-                    float forceToOtherEntity;
-
+                    float forceToOtherEntity = 0.2f;
                     for (int forcesParser = 0; forcesParser < simulationConfig.getForceVectorCount(); forcesParser++)
                     {
-                        const std::string thisEntitysName = simulation.getEntity(thisEntityIndex).name;
-                        const std::string otherEntitysName = simulation.getEntity(comparedEntityIndex).name;
-                        const std::string fromName = simulationConfig.entityForces[forcesParser].from;
-                        const std::string toName = simulationConfig.entityForces[forcesParser].to;
 
-                        bool thisEntityMatch = (strcmp(thisEntitysName.c_str(), fromName.c_str()) == 0);
-                        bool otherEntityMatch = (strcmp(otherEntitysName.c_str(), toName.c_str()) == 0);
-
-                        forceToOtherEntity = (thisEntityMatch && otherEntityMatch)
-                                                 ? (float)simulationConfig.entityForces[forcesParser].force
-                                                 : 0.0f;
+                        // TODO: rewrite force2OtherEntity();
                     }
 
                     /* 3) Creating a vector depending on the neighbours and where it should go*/
@@ -125,5 +116,25 @@ namespace Renderer
     {
         float distance = Force::getDistance(thisEntitysPosition, otherEntitysPosition);
         return (distance <= thisEntitysDetectionRadius);
+    }
+
+    float force2OtherEntity(int thisEntityIndex, int comparedEntityIndex, int parserIndex)
+    {
+        SimConfig &simulationConfig = SimConfig::getInstance();
+        Simulation &simulation = Simulation::getInstance();
+
+        const std::string thisEntitysName = simulation.getEntity(thisEntityIndex).name;
+        const std::string otherEntitysName = simulation.getEntity(comparedEntityIndex).name;
+        const std::string fromName = simulationConfig.entityForces[parserIndex].from;
+        const std::string toName = simulationConfig.entityForces[parserIndex].to;
+
+        bool thisEntityMatch = (strcmp(thisEntitysName.c_str(), fromName.c_str()) == 0);
+        bool otherEntityMatch = (strcmp(otherEntitysName.c_str(), toName.c_str()) == 0);
+
+        const float result = (thisEntityMatch && otherEntityMatch)
+                                 ? (float)simulationConfig.entityForces[parserIndex].force
+                                 : 0.0f;
+
+        return result;
     }
 }

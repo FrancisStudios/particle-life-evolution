@@ -23,6 +23,7 @@ namespace Renderer
     bool loopingThroughEachEntity(int entityIndex, int entityCount);
     bool loopingThroughOtherEntitiesForRelations(int observedEntityIndex, int otherEntityIndex, int entityCount);
     bool isInDetectionRange(Coord2D &thisEntitysPosition, Coord2D &otherEntitysPosition, float thisEntitysDetectionRadius);
+    float force2OtherEntity(int thisEntityIndex, int comparedEntityIndex, int parserIndex);
 }
 
 #endif
