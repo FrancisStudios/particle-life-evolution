@@ -17,52 +17,13 @@
 #include "src/h/simulation.h"
 #include "src/h/force.h"
 #include "src/h/renderer.h"
+#include "src/h/toggles.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
 #elif __linux__
 #define SIM_CONFIG "sim.config.json"
 #endif
-
-#define BUTTON_TIMER_LIMIT 0.5f
-
-void detectIfDebugMenuIsActivated(
-    bool &debugButtonEnabled,
-    bool &debugMode,
-    float &debugButtonEnableTimer,
-    float dtAsSeconds)
-{
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3) && debugButtonEnabled)
-    {
-        debugMode = !debugMode;
-        debugButtonEnabled = false;
-    }
-
-    if (!debugButtonEnabled)
-    {
-        debugButtonEnableTimer += dtAsSeconds;
-        if (debugButtonEnableTimer > BUTTON_TIMER_LIMIT)
-        {
-            debugButtonEnableTimer = 0.0f;
-            debugButtonEnabled = true;
-        }
-    }
-}
-
-void assembleEntitiesFromData(SimConfig &simulationConfig, Simulation &simulation)
-{
-    for (int i = 0; i < simulationConfig.getEntityCount(); i++)
-    {
-        Coord2D randomPosition = Util::generateRandomCoordinate(
-            simulationConfig.getParticleSize(),
-            simulationConfig.getSimulationSize().width,
-            simulationConfig.getSimulationSize().height);
-
-        simulation.getEntity(i).shape.setRadius(simulationConfig.getParticleSize());
-        simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
-        simulation.getEntity(i).shape.setPosition({randomPosition.x, randomPosition.y});
-    }
-}
 
 int main()
 {
@@ -93,7 +54,7 @@ int main()
     shape.setPosition(395.0f, 295.0f);
 
     /* Statical Processes Should Come Here - maybe reorg later */
-    assembleEntitiesFromData(simulationConfig, simulation);
+    Generator::assembleEntitiesForRender();
 
     /* Dynamical Processes Should Come Here - maybe reorg later */
     while (window.isOpen())
@@ -108,22 +69,10 @@ int main()
                 window.close();
         }
 
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            shape.move(100.0f * dtAsSeconds, 0.0f);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            shape.move(-100.0f * dtAsSeconds, 0.0f);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
-            shape.move(0.0f, -100.0f * dtAsSeconds);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
-            shape.move(0.0f, 100.0f * dtAsSeconds);
-
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             window.close();
 
-        detectIfDebugMenuIsActivated(
+        Toggles::detectIfDebugMenuIsActivated(
             debugButtonEnabled,
             debugMode,
             debugButtonEnableTimer,
@@ -136,7 +85,6 @@ int main()
 
         Renderer::renderEntities(window, dtAsSeconds, true);
 
-        window.draw(shape);
         window.draw(controlHUD);
         window.display();
     }

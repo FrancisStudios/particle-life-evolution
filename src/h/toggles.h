@@ -6,18 +6,18 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#ifndef GENERATOR_H
-#define GENERATOR_H
+#ifndef TOGGLES_H
+#define TOGGLES_H
+
+#define BUTTON_TIMER_LIMIT 0.5f
+
+#include <SFML/Graphics.hpp>
+
 #pragma once
 
-#include "./simulationConfig.h"
-#include "./simulation.h"
-#include <nlohmann/json.hpp>
-
-namespace Generator
+namespace Toggles
 {
-    void createEntities(const nlohmann::json_abi_v3_12_0::json &data);
-    void assembleEntitiesForRender();
+    void detectIfDebugMenuIsActivated(bool &debugButtonEnabled, bool &debugMode, float &debugButtonEnableTimer, float deltaTimeS);
 }
 
 #endif

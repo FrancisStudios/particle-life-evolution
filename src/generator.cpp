@@ -42,4 +42,26 @@ namespace Generator
             counter++;
         }
     }
+
+    /**
+     * This function assembles the entities from the simulation config and the
+     * simulation data - this is used in the main control flow.
+     */
+    void assembleEntitiesForRender()
+    {
+        SimConfig &simulationConfig = SimConfig::getInstance();
+        Simulation &simulation = Simulation::getInstance();
+
+        for (int i = 0; i < simulationConfig.getEntityCount(); i++)
+        {
+            Coord2D randomPosition = Util::generateRandomCoordinate(
+                simulationConfig.getParticleSize(),
+                simulationConfig.getSimulationSize().width,
+                simulationConfig.getSimulationSize().height);
+
+            simulation.getEntity(i).shape.setRadius(simulationConfig.getParticleSize());
+            simulation.getEntity(i).shape.setFillColor(simulation.getEntity(i).color);
+            simulation.getEntity(i).shape.setPosition({randomPosition.x, randomPosition.y});
+        }
+    }
 }
