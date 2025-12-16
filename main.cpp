@@ -102,6 +102,10 @@ int main()
 
         Renderer::renderEntities(window, dtAsSeconds, isSimulationStarted);
 
+        controlHUD
+            .setString(
+                ControlHUD::update(isSimulationStarted));
+
         window.draw(controlHUD);
         window.display();
     }

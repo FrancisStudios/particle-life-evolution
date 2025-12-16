@@ -31,8 +31,21 @@ namespace ControlHUD
         HUD.setCharacterSize(fontsize);
         HUD.setPosition(x, y);
         HUD.setFont(typeFace);
-        //HUD.setFillColor(sf::Color::White);
 
         return HUD;
+    }
+
+    std::string update(bool isSimStarted)
+    {
+        std::ostringstream HUDOptions;
+        std::string START_OR_STOP = isSimStarted ? START : STOP;
+
+        HUDOptions << EXIT
+                   << DIVIDER
+                   << START_OR_STOP
+                   << DIVIDER
+                   << DEBUG;
+
+        return HUDOptions.str();
     }
 }
