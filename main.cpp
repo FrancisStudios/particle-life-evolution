@@ -49,7 +49,12 @@ int main()
 
     bool debugMode = false;
     bool debugButtonEnabled = true;
+
+    bool isSimulationStarted = false;
+    bool isSimStartedBtnEnabled = true;
+
     float debugButtonEnableTimer = 0.0f;
+    float simStartedBtnEnableTimer = 0.0f;
 
     log.turnOnLogger();
 
@@ -61,7 +66,7 @@ int main()
 
     /**
      * ================= [Game Loop Process] =================
-     * Simulation frame processing is down below - EZ as that. 
+     * Simulation frame processing is down below - EZ as that.
      */
     while (window.isOpen())
     {
@@ -78,6 +83,12 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
             window.close();
 
+        Toggles::detectIfSimulationIsStarted(
+            isSimStartedBtnEnabled,
+            isSimulationStarted,
+            simStartedBtnEnableTimer,
+            dtAsSeconds);
+
         Toggles::detectIfDebugMenuIsActivated(
             debugButtonEnabled,
             debugMode,
@@ -89,7 +100,7 @@ int main()
         if (debugMode)
             window.draw(debugHUD);
 
-        Renderer::renderEntities(window, dtAsSeconds, true);
+        Renderer::renderEntities(window, dtAsSeconds, isSimulationStarted);
 
         window.draw(controlHUD);
         window.display();

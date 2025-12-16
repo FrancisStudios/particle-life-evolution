@@ -17,7 +17,17 @@
 
 namespace Toggles
 {
-    void detectIfDebugMenuIsActivated(bool &debugButtonEnabled, bool &debugMode, float &debugButtonEnableTimer, float deltaTimeS);
+    void detectIfDebugMenuIsActivated(
+        bool &debugButtonEnabled,
+        bool &debugMode,
+        float &debugButtonEnableTimer,
+        float deltaTimeS);
+
+    void detectIfSimulationIsStarted(
+        bool &simStartBtnEnabled,
+        bool &isSimulationStarted,
+        float &simStartedBtnEnableTimer,
+        float deltaTimeS);
 }
 
 #endif

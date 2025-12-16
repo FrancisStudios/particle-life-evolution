@@ -32,4 +32,27 @@ namespace Toggles
             }
         }
     }
+
+    void detectIfSimulationIsStarted(
+        bool &simStartBtnEnabled,
+        bool &isSimulationStarted,
+        float &simStartedBtnEnableTimer,
+        float deltaTimeS)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && simStartBtnEnabled)
+        {
+            isSimulationStarted = !isSimulationStarted;
+            simStartBtnEnabled = false;
+        }
+
+        if (!simStartBtnEnabled)
+        {
+            simStartedBtnEnableTimer += deltaTimeS;
+            if (simStartedBtnEnableTimer > BUTTON_TIMER_LIMIT)
+            {
+                simStartedBtnEnableTimer = 0.0f;
+                simStartBtnEnabled = true;
+            }
+        }
+    }
 }

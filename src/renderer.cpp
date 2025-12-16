@@ -83,7 +83,7 @@ namespace Renderer
             bool originVectorXCriteria = (originVector.x > -1.0f) && (originVector.x < 1.0f);
             bool originVectorYCriteria = (originVector.y > -1.0f) && (originVector.y < 1.0f);
 
-            if (originVectorXCriteria && originVectorYCriteria)
+            if (originVectorXCriteria && originVectorYCriteria && isSimulationStarted)
             {
                 originVector.x = Util::frandom(-200.0f, 200.0f);
                 originVector.y = Util::frandom(-200.0f, 200.0f);
