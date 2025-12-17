@@ -24,7 +24,6 @@ namespace Renderer
     bool loopingThroughEachEntity(int entityIndex, int entityCount);
     bool loopingThroughOtherEntitiesForRelations(int observedEntityIndex, int otherEntityIndex, int entityCount);
     bool isInDetectionRange(Coord2D &thisEntitysPosition, Coord2D &otherEntitysPosition, float thisEntitysDetectionRadius);
-    void displayDebugInformation(const sf::Vector2f &originVector, const Entity::Cell &entity, sf::RenderWindow &window);
     float force2OtherEntity(int thisEntityIndex, int comparedEntityIndex, int parserIndex);
 }
 
