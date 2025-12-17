@@ -38,7 +38,7 @@ namespace ControlHUD
     std::string update(bool isSimStarted)
     {
         std::ostringstream HUDOptions;
-        std::string START_OR_STOP = isSimStarted ? START : STOP;
+        std::string START_OR_STOP = !isSimStarted ? START : STOP;
 
         HUDOptions << EXIT
                    << DIVIDER
