@@ -10,7 +10,7 @@
 
 namespace Renderer
 {
-    void renderEntities(sf::RenderWindow &window, float deltaTimeS, bool isSimulationStarted)
+    void renderEntities(sf::RenderWindow &window, float deltaTimeS, bool isSimulationStarted, const bool &debugMode)
     {
         SimConfig &simulationConfig = SimConfig::getInstance();
         Simulation &simulation = Simulation::getInstance();

@@ -100,7 +100,7 @@ int main()
         if (debugMode)
             window.draw(debugHUD);
 
-        Renderer::renderEntities(window, dtAsSeconds, isSimulationStarted);
+        Renderer::renderEntities(window, dtAsSeconds, isSimulationStarted, debugMode);
 
         controlHUD
             .setString(
