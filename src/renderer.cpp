@@ -97,7 +97,8 @@ namespace Renderer
                       originVector.y * thisEntitysSpeed * deltaTimeS);
 
             window.draw(simulation.getEntity(thisEntityIndex).shape);
-
+            
+            /* 8) Move to next entity*/
             thisEntityIndex++;
         }
     }
