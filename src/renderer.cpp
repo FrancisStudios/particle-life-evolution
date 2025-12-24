@@ -48,11 +48,17 @@ namespace Renderer
 
                 if (isInDetectionRange(thisEntitysPosition, otherEntitysPosition, thisEntitysDetectionRadius) && isSimulationStarted)
                 {
-                    float forceToOtherEntity = 0.2f;
+                    float forceToOtherEntity = 0.0f;
                     for (int forcesParser = 0; forcesParser < simulationConfig.getForceVectorCount(); forcesParser++)
                     {
+                        float f2OtherEStaging = force2OtherEntity(
+                            thisEntityIndex,
+                            comparedEntityIndex,
+                            forcesParser);
 
-                        // TODO: rewrite force2OtherEntity();
+                        /* We are looping through each connection pair we don't want 0s to overwrite good values */
+                        if (f2OtherEStaging != 0.0f)
+                            forceToOtherEntity = f2OtherEStaging;
                     }
 
                     /* 3) Creating a vector depending on the neighbours and where it should go*/
@@ -97,7 +103,7 @@ namespace Renderer
                       originVector.y * thisEntitysSpeed * deltaTimeS);
 
             window.draw(simulation.getEntity(thisEntityIndex).shape);
-            
+
             /* 8) Move to next entity*/
             thisEntityIndex++;
         }
