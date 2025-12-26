@@ -26,7 +26,7 @@ namespace Renderer
                 simulation.getEntity(thisEntityIndex).shape.getPosition().x,
                 simulation.getEntity(thisEntityIndex).shape.getPosition().y};
 
-            sf::Vector2f thisEntitysVectors[100 - 1]; // TODO: dynamics sizing in a future ver;
+            sf::Vector2f *thisEntitysVectors = new sf::Vector2f[entityCount - 1];
             int savedToThisEntityVectors = 0, processedEntityVectors = 0;
             sf::Vector2f originVector = {0.0f, 0.0f};
 
@@ -104,7 +104,11 @@ namespace Renderer
 
             window.draw(simulation.getEntity(thisEntityIndex).shape);
 
-            /* 8) Move to next entity*/
+            /* 8) Clean up heap memory */
+            delete[] thisEntitysVectors;
+            thisEntitysVectors = nullptr;
+
+            /* 9) Move to next entity*/
             thisEntityIndex++;
         }
     }
