@@ -28,7 +28,7 @@ private:
     int speciesCount;
 
 public:
-    ForceVector entityForces[12]; // TODO: make it dynamic
+    ForceVector *entityForces;
     static SimConfig &getInstance();
     void setParticleSize(float particleSize);
     float getParticleSize();

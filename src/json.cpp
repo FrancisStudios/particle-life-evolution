@@ -106,6 +106,10 @@ namespace JSONOps
      */
     void parseForceVectors(nlohmann::json_abi_v3_12_0::json &data)
     {
+        const int speciesCount = simulationConfig.getSpeciesCount();
+        const int forcesVectorCount = speciesCount * (speciesCount - 1);
+        simulationConfig.entityForces = new ForceVector[forcesVectorCount];
+
         int addedForceVectors = 0;
         while (addedForceVectors < simulationConfig.getForceVectorCount())
         {
