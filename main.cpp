@@ -45,7 +45,7 @@ int main()
     Logger &log = Logger::getInstance();
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
-    sf::Text debugHUD = DebugHUD::init(defaultFont);
+    sf::Text debugHUD = DebugHUD::init(defaultFont, 5.0f, 33.0f);
 
     bool debugMode = false;
     bool debugButtonEnabled = true;
@@ -97,14 +97,17 @@ int main()
 
         window.clear(sf::Color::Black);
 
-        if (debugMode)
-            window.draw(debugHUD);
-
         Renderer::renderEntities(window, dtAsSeconds, isSimulationStarted, debugMode);
 
         controlHUD
             .setString(
                 ControlHUD::update(isSimulationStarted));
+
+        if (debugMode)
+        {
+            window.draw(debugHUD);
+            DebugHUD::displayDebugData(defaultFont, window, dtAsSeconds);
+        }
 
         window.draw(ControlHUD::drawCreditMark(defaultFont, window.getSize()));
         window.draw(controlHUD);
