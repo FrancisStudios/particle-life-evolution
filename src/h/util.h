@@ -16,7 +16,7 @@
 #include <chrono>
 
 #define APP_NAME "Particle Life"
-#define APP_VERSION "v0.4.5"
+#define APP_VERSION "v0.4.6"
 #define AUTHOR "by FrancisStudios"
 #define SPACING " "
 #define DIVIDER " | "
