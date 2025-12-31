@@ -48,4 +48,16 @@ namespace ControlHUD
 
         return HUDOptions.str();
     }
+
+    sf::Text drawCreditMark(const sf::Font &typeface, const sf::Vector2u &screenSize)
+    {
+        sf::Text creditMark;
+
+        creditMark.setString(REPOSITORY);
+        creditMark.setCharacterSize(15);
+        creditMark.setPosition(screenSize.x - 330, screenSize.y - 30);
+        creditMark.setFont(typeface);
+
+        return creditMark;
+    }
 }

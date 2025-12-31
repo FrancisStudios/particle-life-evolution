@@ -106,6 +106,7 @@ int main()
             .setString(
                 ControlHUD::update(isSimulationStarted));
 
+        window.draw(ControlHUD::drawCreditMark(defaultFont, window.getSize()));
         window.draw(controlHUD);
         window.display();
     }

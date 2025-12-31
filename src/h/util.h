@@ -15,6 +15,20 @@
 #include <random>
 #include <chrono>
 
+#define APP_NAME "Particle Life"
+#define APP_VERSION "v0.4.5"
+#define AUTHOR "by FrancisStudios"
+#define SPACING " "
+#define DIVIDER " | "
+#define MARGIN 10
+#define REPOSITORY "github.com/francisstudios/particle-life-evolution"
+
+#ifdef _WIN32
+#define OS "for Windows"
+#elif __linux__
+#define OS "for Linux"
+#endif
+
 struct Coord2D
 {
     float x;

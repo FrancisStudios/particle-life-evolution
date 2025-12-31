@@ -12,11 +12,13 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <sstream>
+#include "./util.h"
 
 namespace ControlHUD
 {
     sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 1.0f, int fontsize = 24);
     std::string update(bool isSimStarted);
+    sf::Text drawCreditMark(const sf::Font &typeface, const sf::Vector2u &screenSize);
 };
 
 #endif
