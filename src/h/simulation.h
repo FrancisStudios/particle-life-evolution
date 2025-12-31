@@ -19,7 +19,7 @@ private:
     Simulation(const Simulation &) = delete;
     Simulation &operator=(const Simulation &) = delete;
 
-    Entity::Cell entities[100]; // TODO: array size should be set by sim.config.json/entityCount
+    Entity::Cell *entities;
     int addedEntites = 0;
 
 public:
@@ -27,6 +27,7 @@ public:
     int addEntity(Entity::Cell &e);
     const Entity::Cell &getEntity(int index) const;
     Entity::Cell &getEntity(int _index);
+    void setEntityCount(int entityCount) { this->entities = new Entity::Cell[entityCount]; };
 };
 
 #endif

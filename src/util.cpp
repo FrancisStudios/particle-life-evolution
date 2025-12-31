@@ -8,7 +8,7 @@
 #include "./h/util.h"
 
 #define APP_NAME "Particle Life"
-#define APP_VERSION "v0.4.3"
+#define APP_VERSION "v0.4.5"
 #define AUTHOR "by FrancisStudios"
 #define SPACING " "
 #define DIVIDER " | "

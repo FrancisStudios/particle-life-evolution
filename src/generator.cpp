@@ -15,6 +15,9 @@ namespace Generator
         SimConfig &simulationConfig = SimConfig::getInstance();
         Simulation &simulation = Simulation::getInstance();
 
+        /* Set Dynamic Entity Count (&size) For simulation.entities PTR */
+        simulation.setEntityCount(simulationConfig.getEntityCount());
+
         int _speciesCount = simulationConfig.getSpeciesCount();
         int _entityCount = simulationConfig.getEntityCount();
         int counter = 0;
@@ -25,7 +28,7 @@ namespace Generator
             if (speciesTypeSelector == _speciesCount)
                 speciesTypeSelector = 0;
 
-            // Entity Factory
+            /* Entity factory - 200.000 units are ready with a million more on the way*/
             Entity::Cell product =
                 Entity::Cell(
                     (std::string)data["species"][speciesTypeSelector]["name"],

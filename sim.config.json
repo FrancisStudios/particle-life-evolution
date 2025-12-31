@@ -6,7 +6,7 @@
     },
     "particle-size": 10.0,
     "entity-spawn-seed": "random",
-    "entity-count": 100,
+    "entity-count": 200,
     "species-count": 4,
     "species": [
         {
