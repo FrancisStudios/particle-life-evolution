@@ -18,6 +18,8 @@
 #include "src/h/force.h"
 #include "src/h/renderer.h"
 #include "src/h/toggles.h"
+#include "src/h/camera.h"
+#include "src/h/background.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
@@ -28,13 +30,16 @@
 int main()
 {
     /**
-     * Setup process - general variables and class initializations
-     * ======== This is where all the control flow starts ========
+     * ================= [   Setup Process   ] =================
+     * Global variables and class instantiations - some singletons
+     * are first instantiated in other classes #map for example
      */
     JSONOps::loadSimulatorConfig(SIM_CONFIG);
 
     SimConfig &simulationConfig = SimConfig::getInstance();
     Simulation &simulation = Simulation::getInstance();
+    Logger &log = Logger::getInstance();
+    Camera &camera = Camera::getInstance();
 
     sf::RenderWindow window(
         sf::VideoMode(simulationConfig.getSimulationSize().width,
@@ -42,7 +47,7 @@ int main()
         Util::WINDOW_TITLE());
 
     sf::Clock clock;
-    Logger &log = Logger::getInstance();
+
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
     sf::Text debugHUD = DebugHUD::init(defaultFont, 5.0f, 33.0f);
@@ -95,9 +100,12 @@ int main()
             debugButtonEnableTimer,
             dtAsSeconds);
 
-        window.clear(sf::Color::Black);
-
-        Renderer::renderEntities(window, dtAsSeconds, isSimulationStarted, debugMode);
+        Background::draw(window);
+        Renderer::renderEntities(
+            window,
+            dtAsSeconds,
+            isSimulationStarted,
+            debugMode);
 
         controlHUD
             .setString(

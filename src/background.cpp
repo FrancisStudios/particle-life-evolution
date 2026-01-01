@@ -8,21 +8,14 @@
  * └──────────────────────────────────────────┘
  */
 
-#ifndef CAMERA_H
-#define CAMERA_H
-#pragma once
+#include "./h/background.h"
 
-class Camera
+namespace Background
 {
-private:
-    Camera() {};
-    ~Camera() {};
-    Camera(const Camera &) = delete;
-    Camera &operator=(const Camera &) = delete;
+    void draw(sf::RenderWindow &window)
+    {
+        const sf::Color clearColor(0x00, 0x1a, 0x33);
 
-public:
-    static Camera &getInstance();
-    void init();
-};
-
-#endif
+        window.clear(clearColor);
+    }
+}

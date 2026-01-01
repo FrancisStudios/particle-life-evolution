@@ -15,3 +15,8 @@ Camera &Camera::getInstance()
     static Camera instance;
     return instance;
 }
+
+void Camera::init()
+{
+    
+}

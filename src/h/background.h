@@ -8,21 +8,15 @@
  * └──────────────────────────────────────────┘
  */
 
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef BACKGROUND_H
+#define BACKGROUND_H
 #pragma once
 
-class Camera
-{
-private:
-    Camera() {};
-    ~Camera() {};
-    Camera(const Camera &) = delete;
-    Camera &operator=(const Camera &) = delete;
+#include <SFML/Graphics.hpp>
 
-public:
-    static Camera &getInstance();
-    void init();
-};
+namespace Background
+{
+    void draw(sf::RenderWindow &window);
+}
 
 #endif
