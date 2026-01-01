@@ -25,7 +25,7 @@ namespace DebugHUD
         return HUD;
     }
 
-    void displayDebugData(const sf::Font &typeFace, sf::RenderWindow &window, float deltaTime)
+    void displayDebugData(const sf::Font &typeFace, sf::RenderWindow &window, float deltaTime, Coord2D &absolutePosition)
     {
 
         std::vector<sf::Text> DebugDataEntries;
@@ -44,8 +44,15 @@ namespace DebugHUD
 
         std::ostringstream SpeciesCountDisplay;
         SpeciesCountDisplay << "SIMULATING "
-                           << simulationConfig.getSpeciesCount()
-                           << " SPECIES";
+                            << simulationConfig.getSpeciesCount()
+                            << " SPECIES";
+
+        std::ostringstream CoordinateDisplay;
+        CoordinateDisplay << "X: "
+                          << absolutePosition.x
+                          << "\n"
+                          << "Y:"
+                          << absolutePosition.y;
 
         /* FPS Measurement Unit Display - independent from the counter ln */
         sf::Text FPSMeasurementName;
@@ -70,6 +77,12 @@ namespace DebugHUD
         setTextAndPosition(SpeciesCount, SpeciesCountDisplay.str(), {LEFT_MG, 100.0f});
         setDefaultDataDisplayProperties(SpeciesCount, typeFace);
         DebugDataEntries.push_back(SpeciesCount);
+
+        /* Coordinates display */
+        sf::Text CameraCoordinates;
+        setTextAndPosition(CameraCoordinates, CoordinateDisplay.str(), {LEFT_MG, 120});
+        setDefaultDataDisplayProperties(CameraCoordinates, typeFace);
+        DebugDataEntries.push_back(CameraCoordinates);
 
         /* Rendering each text */
         for (int nthDebugDataEntry = 0;

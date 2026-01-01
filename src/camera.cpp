@@ -21,6 +21,9 @@ void Camera::init()
     /* Initializing camera position */
     this->position.x = 0;
     this->position.y = 0;
+
+    this->absolutePosition.x = 0;
+    this->absolutePosition.y = 0;
 }
 
 void Camera::update(float deltaTime)
@@ -46,10 +49,10 @@ void Camera::update(float deltaTime)
     if (position.x != 0.0f || position.y != 0.0f)
         updateEntitesWithCameraPosition();
 
-    // TODO: zoom is not yet ready, needs more than 
+    // TODO: zoom is not yet ready, needs more than
     // TODO: setting scale size on entities - between
     // TODO: space should grow as well
-    // if (zoom != 1.0f) 
+    // if (zoom != 1.0f)
     //     updateEntitesWithCameraZoom();
 }
 
@@ -68,6 +71,10 @@ void Camera::updateEntitesWithCameraPosition()
 
         i++;
     }
+
+    /* Saving absolute position for later features */
+    this->absolutePosition.x += position.x;
+    this->absolutePosition.y -= position.y;
 
     /* Resetting camera positions because everything is done now */
     Camera::position.x = 0.0f;

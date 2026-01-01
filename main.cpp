@@ -121,7 +121,11 @@ int main()
         if (debugMode)
         {
             window.draw(debugHUD);
-            DebugHUD::displayDebugData(defaultFont, window, dtAsSeconds);
+            DebugHUD::displayDebugData(
+                defaultFont,
+                window,
+                dtAsSeconds,
+                camera.getAbsolutePosition());
         }
 
         window.draw(ControlHUD::drawCreditMark(defaultFont, window.getSize()));

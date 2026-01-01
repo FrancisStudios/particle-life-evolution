@@ -4,7 +4,7 @@
         "width": 800,
         "height": 600
     },
-    "particle-size": 10.0,
+    "particle-size": 7.0,
     "entity-spawn-seed": "random",
     "entity-count": 200,
     "species-count": 4,
