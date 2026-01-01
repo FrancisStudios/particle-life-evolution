@@ -21,6 +21,7 @@
 #define COLOR_YELLOW "yellow"
 #define BLANK_ENTITY_NAME "_blank"
 #define DEFAULT_COLOR "_blank_color"
+#define ALPHA_VALUE 0xf0
 #define DEFAULT_SPEED 0.0f
 #define DEFAULT_RADIUS DEFAULT_SPEED
 #define DEFAULT_VECTOR2DF {0.0f, 0.0f}
