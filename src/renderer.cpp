@@ -96,11 +96,13 @@ namespace Renderer
             }
 
             /* 7) Move and render the entities - finally*/
+            float thisEntitySpeed = (thisEntitysSpeed * deltaTimeS);
+
             simulation
                 .getEntity(thisEntityIndex)
                 .shape
-                .move(originVector.x * thisEntitysSpeed * deltaTimeS,
-                      originVector.y * thisEntitysSpeed * deltaTimeS);
+                .move(originVector.x * thisEntitySpeed,
+                      originVector.y * thisEntitySpeed);
 
             window.draw(simulation.getEntity(thisEntityIndex).shape);
 

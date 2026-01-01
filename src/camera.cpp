@@ -18,5 +18,20 @@ Camera &Camera::getInstance()
 
 void Camera::init()
 {
-    
+    /* Initializing camera position */
+    this->position.x = 0;
+    this->position.y = 0;
+}
+
+void Camera::update(float deltaTime)
+{
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        position.y -= cameraSpeed * deltaTime;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    {
+        position.y += cameraSpeed * deltaTime;
+    }
 }

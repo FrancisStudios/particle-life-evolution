@@ -51,6 +51,7 @@ int main()
     sf::Font defaultFont = FontLoader::loadDefault();
     sf::Text controlHUD = ControlHUD::init(defaultFont);
     sf::Text debugHUD = DebugHUD::init(defaultFont, 5.0f, 33.0f);
+    camera.init();
 
     bool debugMode = false;
     bool debugButtonEnabled = true;
@@ -99,6 +100,12 @@ int main()
             debugMode,
             debugButtonEnableTimer,
             dtAsSeconds);
+
+        /**
+         * ================= [Rendering Processes] =================
+         * Renderers and displayers are updated down here ^^ ------>
+         */
+        camera.update(dtAsSeconds);
 
         Background::draw(window);
         Renderer::renderEntities(

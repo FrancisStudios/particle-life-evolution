@@ -38,7 +38,7 @@
         {
             "from": "goblin",
             "to": "rotblud",
-            "strength": 1
+            "strength": 0
         },
         {
             "from": "goblin",
@@ -68,7 +68,7 @@
         {
             "from": "dwarf",
             "to": "goblin",
-            "strength": 1
+            "strength": 0.5
         },
         {
             "from": "dwarf",
@@ -93,7 +93,7 @@
         {
             "from": "elf",
             "to": "dwarf",
-            "strength": 1
+            "strength": 0.5
         }
     ]
 }

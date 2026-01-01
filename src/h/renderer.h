@@ -8,6 +8,7 @@
 
 #ifndef RENDERER_H
 #define RENDERER_H
+#pragma once
 
 #include "util.h"
 #include <SFML/Graphics.hpp>
@@ -15,8 +16,7 @@
 #include "simulation.h"
 #include "force.h"
 #include "fontloader.h"
-
-#pragma once
+#include "camera.h"
 
 namespace Renderer
 {
