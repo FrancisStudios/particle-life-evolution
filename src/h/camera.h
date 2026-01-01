@@ -14,6 +14,8 @@
 
 #include <SFML/Graphics.hpp>
 #include "./util.h"
+#include "./simulation.h"
+#include "./simulationConfig.h"
 
 class Camera
 {
@@ -23,7 +25,11 @@ private:
     Camera(const Camera &) = delete;
     Camera &operator=(const Camera &) = delete;
     Coord2D position;
-    float cameraSpeed = 10.0f;
+    float zoom = 1.0;
+    float cameraSpeed = 200.0f;
+    float zoomSpeed = 10.0f;
+    void updateEntitesWithCameraPosition();
+    void updateEntitesWithCameraZoom();
 
 public:
     static Camera &getInstance();
