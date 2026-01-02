@@ -4,9 +4,9 @@
 Particle life simulation is quite a popular concept in evolution and genetics research, as a simple modell that we can study and simulate different scenarios by just adjusting weights in the sim's configuration. This is a little experiment by me, so I get to have a little fun with the concept myself.
 
 ## ⬇️ Downloads
-🐧 [Linux (pre-release v0.4.8)](./dist/linux/)
+🐧 [Linux (pre-release v0.5.1)](./dist/linux/)
 
-🪟 [Windows (pre-release v0.4.8)](./dist/windows/)
+🪟 [Windows (pre-release v0.5.1)](./dist/windows/)
 
 >[!WARNING]
 > The author `Francis Studios Softwares` doesn't take any responsibilities over this and other Open Source applications, **use at your own risk and responsibility**
@@ -14,13 +14,13 @@ Particle life simulation is quite a popular concept in evolution and genetics re
 ### Note
 Now debug menu is available in the application, with a couple of simulation stats, in later versions this list will grow and adapt to new information and features.
 
-![screenshot](./docs/v048-screenshot.png)
+![screenshot](./docs/v051-screenshot.png)
 
 The development of this simulation was a learning experience for me, since I haven't gotten so far with particle simulations yet. Over the years I've tried different approaches but **this seems to be the most complete yet** as previous attempts were **too overcomplicated** to maintain and develop for longer periods of time, also keeping the scope low enough to be able to survive as a single developer project. 
 
 In this _"run"_ I managed to keep the logic simple and clean, the repository easy to read and understand and the **scope focused on the minimal viable product**. This application has grown over multiple prerelease versions, getting more and more features over the times **and still getting updates regularly**
 
-![screenshot](./docs/screenshot2.png)
+![screenshot](./docs/v048-screenshot.png)
 
 We can `observe` beautiful, and matematically / _scientifically_ interesting patterns just as they can be observed / _be present_ in nature. This project aims to simulate particle interactions (push and pull forces) and in later versions evolution and life simulation on a very simplistic, but easy to understand scale.
 
