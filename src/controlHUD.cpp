@@ -12,6 +12,7 @@
 #define EXIT "[E]xit"
 #define START "[S]tart"
 #define STOP "[S]top"
+#define INSTRUCTIONS "[I]nstructions"
 #define DEBUG "[F3] Debug"
 
 namespace ControlHUD
@@ -24,6 +25,8 @@ namespace ControlHUD
         HUDOptions << EXIT
                    << DIVIDER
                    << START
+                   << DIVIDER
+                   << INSTRUCTIONS
                    << DIVIDER
                    << DEBUG;
 
@@ -43,6 +46,8 @@ namespace ControlHUD
         HUDOptions << EXIT
                    << DIVIDER
                    << START_OR_STOP
+                   << DIVIDER
+                   << INSTRUCTIONS
                    << DIVIDER
                    << DEBUG;
 

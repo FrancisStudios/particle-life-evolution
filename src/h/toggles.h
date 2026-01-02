@@ -28,6 +28,12 @@ namespace Toggles
         bool &isSimulationStarted,
         float &simStartedBtnEnableTimer,
         float deltaTimeS);
+
+    void detectIfInstructionsWindowIsOpened(
+        bool &isInstructionsWindowEnabled,
+        bool &isInstructionsOpen,
+        float &instructionsWindowBtnTimer,
+        float deltaTimeS);
 }
 
 #endif

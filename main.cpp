@@ -20,6 +20,7 @@
 #include "src/h/toggles.h"
 #include "src/h/camera.h"
 #include "src/h/background.h"
+#include "src/h/instructions.h"
 
 #ifdef _WIN32
 #define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
@@ -55,12 +56,15 @@ int main()
 
     bool debugMode = false;
     bool debugButtonEnabled = true;
+    bool isInstructionsOpen = false;
 
     bool isSimulationStarted = false;
     bool isSimStartedBtnEnabled = true;
+    bool isInstructionsWindowEnabled = true;
 
     float debugButtonEnableTimer = 0.0f;
     float simStartedBtnEnableTimer = 0.0f;
+    float instructionsWindowBtnTimer = 0.0f;
 
     log.turnOnLogger();
 
@@ -101,10 +105,17 @@ int main()
             debugButtonEnableTimer,
             dtAsSeconds);
 
+        Toggles::detectIfInstructionsWindowIsOpened(
+            isInstructionsWindowEnabled,
+            isInstructionsOpen,
+            instructionsWindowBtnTimer,
+            dtAsSeconds);
+
         /**
          * ================= [Rendering Processes] =================
          * Renderers and displayers are updated down here ^^ ------>
          */
+        // TODO: refactor this, starting to get out of hands
         camera.update(dtAsSeconds);
 
         Background::draw(window);
@@ -127,6 +138,9 @@ int main()
                 dtAsSeconds,
                 camera.getAbsolutePosition());
         }
+
+        if (isInstructionsOpen)
+            InstructionsWindow::open(window, defaultFont);
 
         window.draw(ControlHUD::drawCreditMark(defaultFont, window.getSize()));
         window.draw(controlHUD);

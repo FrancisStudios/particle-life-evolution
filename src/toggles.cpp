@@ -8,6 +8,10 @@
 
 #include "./h/toggles.h"
 
+// TODO: refactor this whole shite... I don't know why didnt't I create proper timers for these
+// TODO: it would have been easier, but this is the route we took in the past... Well what are
+// TODO: we gonna do!?
+
 namespace Toggles
 {
     void detectIfDebugMenuIsActivated(
@@ -52,6 +56,29 @@ namespace Toggles
             {
                 simStartedBtnEnableTimer = 0.0f;
                 simStartBtnEnabled = true;
+            }
+        }
+    }
+
+    void detectIfInstructionsWindowIsOpened(
+        bool &isInstructionsWindowEnabled,
+        bool &isInstructionsOpen,
+        float &instructionsWindowBtnTimer,
+        float deltaTimeS)
+    {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::I) && isInstructionsWindowEnabled)
+        {
+            isInstructionsOpen = !isInstructionsOpen;
+            isInstructionsWindowEnabled = false;
+        }
+
+        if (!isInstructionsWindowEnabled)
+        {
+            instructionsWindowBtnTimer += deltaTimeS;
+            if (instructionsWindowBtnTimer > BUTTON_TIMER_LIMIT)
+            {
+                instructionsWindowBtnTimer = 0.0f;
+                isInstructionsWindowEnabled = true;
             }
         }
     }
