@@ -49,10 +49,16 @@ namespace InstructionsWindow
                                         << "------------------------------------------------------------------\n"
                                         << "\n"
                                         << "Project started on 2025 november 6 | C++ | SFML 2.6 | GCC 15.2.0 \n"
+                                        << "built for Linux and Windows operating systems\n"
                                         << "\n"
                                         << "\n"
                                         << "\n"
-                                        << "* * * * * * * * * * * * * * * * * * * PRESS [I] TO CLOSE THIS DIALOG * * * * * * * * * * * * * * * * * * *";
+                                        << "\n"
+                                        << "\n"
+                                        << "\n"
+                                        << "\n"
+                                        << "\n"
+                                        << "                                                      | PRESS [I] TO CLOSE THIS DIALOG |";
         setDefaultTextProperties(
             instructionsDescription,
             instructionsDescriptionTemplate.str(),

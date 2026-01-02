@@ -17,7 +17,7 @@
 namespace ControlHUD
 {
     sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 1.0f, int fontsize = 24);
-    std::string update(bool isSimStarted);
+    std::string update(bool isSimStarted, bool isInstructionsOpen);
     sf::Text drawCreditMark(const sf::Font &typeface, const sf::Vector2u &screenSize);
 };
 

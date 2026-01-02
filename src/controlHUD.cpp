@@ -13,6 +13,7 @@
 #define START "[S]tart"
 #define STOP "[S]top"
 #define INSTRUCTIONS "[I]nstructions"
+#define IW_CLOSE "[I] Close Panel"
 #define DEBUG "[F3] Debug"
 
 namespace ControlHUD
@@ -38,16 +39,17 @@ namespace ControlHUD
         return HUD;
     }
 
-    std::string update(bool isSimStarted)
+    std::string update(bool isSimStarted, bool isInstructionsOpen)
     {
         std::ostringstream HUDOptions;
         std::string START_OR_STOP = !isSimStarted ? START : STOP;
+        std::string INSTRUCTIONS_OR_CLOSE = isInstructionsOpen ? IW_CLOSE : INSTRUCTIONS;
 
         HUDOptions << EXIT
                    << DIVIDER
                    << START_OR_STOP
                    << DIVIDER
-                   << INSTRUCTIONS
+                   << INSTRUCTIONS_OR_CLOSE
                    << DIVIDER
                    << DEBUG;
 

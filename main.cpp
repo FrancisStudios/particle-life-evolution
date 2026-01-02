@@ -127,7 +127,7 @@ int main()
 
         controlHUD
             .setString(
-                ControlHUD::update(isSimulationStarted));
+                ControlHUD::update(isSimulationStarted, isInstructionsOpen));
 
         if (debugMode)
         {
