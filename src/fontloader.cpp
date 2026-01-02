@@ -8,12 +8,6 @@
 
 #include "./h/fontloader.h"
 
-#ifdef _WIN32
-#define TYPEFACE_LOCATION "typeface.ttf"
-#elif __linux__
-#define TYPEFACE_LOCATION "./dist/linux/typeface.ttf"
-#endif
-
 namespace FontLoader
 {
     sf::Font loadDefault()

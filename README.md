@@ -8,7 +8,7 @@ Particle life simulation is quite a popular concept in evolution and genetics re
 ### 🟢 Release versions (Stable)
 
 - 🐧 **v.0.5.2** Linux Stable - [Download ZIP for Linux ⬇️](./dist/ParticleLife_v0.5.2_linux.zip)
-- 🪟 **v.0.5.2** Windows Stable - [Download ZIP for Linux ⬇️](./dist/ParticleLife_v0.5.2_windows.zip)
+- 🪟 **v.0.5.2** Windows Stable - [Download ZIP for Windows ⬇️](./dist/ParticleLife_v0.5.2_windows.zip)
 
 
 ### 🟡 Pre-release versions (Unstable)

@@ -10,7 +10,9 @@
 #define FONT_LOADER_H
 #pragma once
 
-#include<SFML/Graphics.hpp>
+#define TYPEFACE_LOCATION "typeface.ttf"
+
+#include <SFML/Graphics.hpp>
 
 namespace FontLoader
 {
