@@ -17,7 +17,7 @@
 #include "util.h"
 
 #define IW_MARGIN 50
-#define DEFAULT_IW_TEXT_SIZE 15
+#define DEFAULT_IW_TEXT_SIZE 14
 
 namespace InstructionsWindow
 {
