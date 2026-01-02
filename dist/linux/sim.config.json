@@ -1,0 +1,99 @@
+{
+    "file": "ple-simconfig-1.x",
+    "simulation-size": {
+        "width": 800,
+        "height": 600
+    },
+    "particle-size": 7.0,
+    "entity-spawn-seed": "random",
+    "entity-count": 200,
+    "species-count": 4,
+    "species": [
+        {
+            "name": "goblin",
+            "color": "green",
+            "speed": 100,
+            "detection-radius": 100.0
+        },
+        {
+            "name": "rotblud",
+            "color": "red",
+            "speed": 80,
+            "detection-radius": 100.0
+        },
+        {
+            "name": "dwarf",
+            "color": "yellow",
+            "speed": 30,
+            "detection-radius": 100.0
+        },
+        {
+            "name": "elf",
+            "color": "blue",
+            "speed": 15,
+            "detection-radius": 100.0
+        }
+    ],
+    "forces": [
+        {
+            "from": "goblin",
+            "to": "rotblud",
+            "strength": 0
+        },
+        {
+            "from": "goblin",
+            "to": "dwarf",
+            "strength": 1
+        },
+        {
+            "from": "goblin",
+            "to": "elf",
+            "strength": 1
+        },
+        {
+            "from": "rotblud",
+            "to": "goblin",
+            "strength": 1
+        },
+        {
+            "from": "rotblud",
+            "to": "dwarf",
+            "strength": 1
+        },
+        {
+            "from": "rotblud",
+            "to": "elf",
+            "strength": 1
+        },
+        {
+            "from": "dwarf",
+            "to": "goblin",
+            "strength": 0.5
+        },
+        {
+            "from": "dwarf",
+            "to": "rotblud",
+            "strength": 1
+        },
+        {
+            "from": "dwarf",
+            "to": "elf",
+            "strength": 1
+        },
+        {
+            "from": "elf",
+            "to": "goblin",
+            "strength": 1
+        },
+        {
+            "from": "elf",
+            "to": "rotblud",
+            "strength": 1
+        },
+        {
+            "from": "elf",
+            "to": "dwarf",
+            "strength": 0.5
+        }
+    ]
+}

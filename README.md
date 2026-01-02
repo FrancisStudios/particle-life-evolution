@@ -4,9 +4,17 @@
 Particle life simulation is quite a popular concept in evolution and genetics research, as a simple modell that we can study and simulate different scenarios by just adjusting weights in the sim's configuration. This is a little experiment by me, so I get to have a little fun with the concept myself.
 
 ## ⬇️ Downloads
-🐧 [Linux (pre-release v0.5.2)](./dist/linux/)
 
-🪟 [Windows (pre-release v0.5.2)](./dist/windows/)
+### 🟢 Release versions (Stable)
+
+- 🐧 **v.0.5.2** Linux Stable - [Download ZIP for Linux ⬇️](./dist/ParticleLife_v0.5.2_linux.zip)
+- 🪟 **v.0.5.2** Windows Stable - [Download ZIP for Linux ⬇️](./dist/ParticleLife_v0.5.2_windows.zip)
+
+
+### 🟡 Pre-release versions (Unstable)
+- 🐧 [Linux (pre-release v0.5.2)](./dist/linux/)
+
+- 🪟 [Windows (pre-release v0.5.2)](./dist/windows/)
 
 >[!WARNING]
 > The author `Francis Studios Softwares` doesn't take any responsibilities over this and other Open Source applications, **use at your own risk and responsibility**

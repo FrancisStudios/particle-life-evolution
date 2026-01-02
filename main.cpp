@@ -6,6 +6,8 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
+#define RELEASE false
+
 #include <SFML/Graphics.hpp>
 #include "src/h/controlHUD.h"
 #include "src/h/fontloader.h"
@@ -22,11 +24,13 @@
 #include "src/h/background.h"
 #include "src/h/instructions.h"
 
-#ifdef _WIN32
-#define SIM_CONFIG "../../sim.config.json" // TODO: in prod it should be ./sim...
-#elif __linux__
-#define SIM_CONFIG "sim.config.json"
-#endif
+// #ifdef _WIN32 
+// #define SIM_CONFIG "../../sim.config.json"
+// #elif __linux__
+// #define SIM_CONFIG "sim.config.json"
+// #endif
+
+#define SIM_CONFIG "./sim.config.json"
 
 int main()
 {
@@ -66,7 +70,8 @@ int main()
     float simStartedBtnEnableTimer = 0.0f;
     float instructionsWindowBtnTimer = 0.0f;
 
-    log.turnOnLogger();
+    if (!RELEASE)
+        log.turnOnLogger();
 
     /**
      * ================= [Statical Processes] =================
