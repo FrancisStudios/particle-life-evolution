@@ -10,6 +10,7 @@
 #define UTIL_H
 #pragma once
 
+#include <SFML/Graphics.hpp>
 #include <string>
 #include <sstream>
 #include <random>
@@ -58,5 +59,12 @@ struct ForceVector
     std::string from;
     std::string to;
     float force;
+};
+
+struct GenericWindowData
+{
+    sf::RenderWindow &window;
+    sf::Font &typeface;
+    float deltaTime;
 };
 #endif

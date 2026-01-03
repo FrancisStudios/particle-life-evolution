@@ -24,6 +24,7 @@ namespace DebugHUD
 {
     sf::Text init(const sf::Font &typeFace, float x = 5.0f, float y = 100.0f, int fontsize = 24);
     void displayDebugData(const sf::Font &typeFace, sf::RenderWindow &window, float deltaTime, Coord2D &absolutePosition);
+    void show(bool isDebugMode, sf::Text &debugHudHandler, GenericWindowData windowData, Coord2D &cameraOffset);
     void setTextAndPosition(sf::Text &textHandler, std::string text, Coord2D position);
     void setDefaultDataDisplayProperties(sf::Text &textHandler, const sf::Font &typeface);
 }

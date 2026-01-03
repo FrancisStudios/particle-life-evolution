@@ -25,6 +25,22 @@ namespace DebugHUD
         return HUD;
     }
 
+    void show(bool isDebugMode, sf::Text &debugHudHandler, GenericWindowData windowData, Coord2D &cameraOffset)
+    {
+        if (isDebugMode)
+        {
+            /* Debug HUD is just the top flair */
+            windowData.window.draw(debugHudHandler);
+
+            /* This is the data display */
+            displayDebugData(
+                windowData.typeface,
+                windowData.window,
+                windowData.deltaTime,
+                cameraOffset);
+        }
+    }
+
     void displayDebugData(const sf::Font &typeFace, sf::RenderWindow &window, float deltaTime, Coord2D &absolutePosition)
     {
 

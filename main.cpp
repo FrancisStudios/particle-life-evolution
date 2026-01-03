@@ -56,7 +56,7 @@ int main()
     sf::Text debugHUD = DebugHUD::init(defaultFont, 5.0f, 33.0f);
     camera.init();
 
-    bool debugMode = false;
+    bool isDebugMode = false;
     bool debugButtonEnabled = true;
     bool isInstructionsOpen = false;
 
@@ -103,7 +103,7 @@ int main()
 
         Toggles::detectIfDebugMenuIsActivated(
             debugButtonEnabled,
-            debugMode,
+            isDebugMode,
             debugButtonEnableTimer,
             dtAsSeconds);
 
@@ -117,37 +117,38 @@ int main()
          * ================= [Rendering Processes] =================
          * Renderers and displayers are updated down here ^^ ------>
          */
-        // TODO: refactor this, starting to get out of hands
+
         camera.update(dtAsSeconds);
 
+        /* Layer 0) Render the background */
         Background::draw(window);
+
+        /* Layer 1) Render the entities and simulation */
         Renderer::renderEntities(
             window,
             dtAsSeconds,
             isSimulationStarted,
-            debugMode);
+            isDebugMode);
 
+        /* Layer 2) Head Up Displays for controls and debug data */
         controlHUD
             .setString(
                 ControlHUD::update(isSimulationStarted, isInstructionsOpen));
+        window.draw(controlHUD);
 
-        if (debugMode)
-        {
-            window.draw(debugHUD);
-            DebugHUD::displayDebugData(
-                defaultFont,
-                window,
-                dtAsSeconds,
-                camera.getAbsolutePosition());
-        }
+        DebugHUD::show(
+            isDebugMode,
+            debugHUD,
+            {window, defaultFont, dtAsSeconds},
+            camera.getAbsolutePosition());
 
+        /* Layer 3) Instructions dialog if enabled */
         if (isInstructionsOpen)
             InstructionsWindow::open(window, defaultFont);
 
         ControlHUD::drawCreditMark(defaultFont, window);
-        
-        window.draw(controlHUD);
-        window.display();
+
+                window.display();
     }
 
     return 0;
