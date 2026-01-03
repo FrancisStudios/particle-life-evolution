@@ -6,8 +6,6 @@
  * ____ ©2025 Francis Studios Softwares by L. ___
  */
 
-#define RELEASE false
-
 #include <SFML/Graphics.hpp>
 #include "src/h/controlHUD.h"
 #include "src/h/fontloader.h"
@@ -24,13 +22,13 @@
 #include "src/h/background.h"
 #include "src/h/instructions.h"
 
-// #ifdef _WIN32 
-// #define SIM_CONFIG "../../sim.config.json"
-// #elif __linux__
-// #define SIM_CONFIG "sim.config.json"
-// #endif
+#ifdef _WIN32
+#define SIM_CONFIG "../../sim.config.json"
+#elif __linux__
+#define SIM_CONFIG "sim.config.json"
+#endif
 
-#define SIM_CONFIG "./sim.config.json"
+// #define SIM_CONFIG "./sim.config.json"
 
 int main()
 {
@@ -70,8 +68,7 @@ int main()
     float simStartedBtnEnableTimer = 0.0f;
     float instructionsWindowBtnTimer = 0.0f;
 
-    if (!RELEASE)
-        log.turnOnLogger();
+    log.turnOnLogger();
 
     /**
      * ================= [Statical Processes] =================
@@ -147,7 +144,8 @@ int main()
         if (isInstructionsOpen)
             InstructionsWindow::open(window, defaultFont);
 
-        window.draw(ControlHUD::drawCreditMark(defaultFont, window.getSize()));
+        ControlHUD::drawCreditMark(defaultFont, window);
+        
         window.draw(controlHUD);
         window.display();
     }
