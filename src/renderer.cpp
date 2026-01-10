@@ -91,8 +91,8 @@ namespace Renderer
 
             if (originVectorXCriteria && originVectorYCriteria && isSimulationStarted)
             {
-                originVector.x = Util::frandom(-200.0f, 200.0f);
-                originVector.y = Util::frandom(-200.0f, 200.0f);
+                originVector.x = Util::frandom(-100.0f, 100.0f);
+                originVector.y = Util::frandom(-100.0f, 100.0f);
             }
 
             /* 7) Move and render the entities - finally*/
